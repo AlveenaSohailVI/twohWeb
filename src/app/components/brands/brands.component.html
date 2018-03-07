@@ -1,3 +1,42 @@
+<div class="modal modals"  id="myModal" role="dialog" *ngIf='show' >
+    <!-- <div class="modal-dialog"> -->
+
+        <!-- Modal content-->
+        <!-- <div class="modal-content"> -->
+            <!-- <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div> -->
+            <!-- <div class="modal-body"> -->
+                    <div class="language-popup">
+
+                <h2>Please select</h2>
+
+                <div class="flag-box" data-dismiss="modal" (click)='selectCountry("usa")'>
+                    <img src="assets/images/flag1.png" alt="" />
+                    <span>United
+                        <br> States</span>
+                </div>
+
+                <div class="flag-box" data-dismiss="modal">
+                    <img src="assets/images/flag2.png" alt="" (click)='selectCountry("uk")' />
+                    <span>United
+                        <br> Kingdom</span>
+                </div>
+                    </div>
+            <!-- </div> -->
+            <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div> -->
+        <!-- </div> -->
+
+    <!-- </div> -->
+</div>
+
+
+
+
+
 <div class="top_brand wow fadeInDown" id="brands">
     <div class="container">
 
@@ -34,32 +73,25 @@
                     <div class="brand_logo">
 
                         <ul>
-                            <li *ngFor="let brand of brands"><a href="{{brand.url}}" target="_blank"><img src="{{brand.image}}" alt="{{brand.name}}" class="img-zoom"/></a></li>
+                            <li *ngFor="let brand of brands"><a href="{{brand.url}}" target="_blank"><img id='imgs' src="{{brand.image}}" alt="{{brand.name}}" class="img-zoom"/></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="tab-sec2">
                     <div class="brand_logo">
                         <ul>
-                            <li *ngFor="let brand of brandsuk"><a href="{{brand.url}}" target="_blank"><img src="{{brand.image}}" alt="{{brand.name}}" class="img-zoom"/></a></li>
+                            <li *ngFor="let brand of brandsuk"><a href="{{brand.url}}" target="_blank"><img id='imgs' src="{{brand.image}}" alt="{{brand.name}}" class="img-zoom"/></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
             <div class="row">
 
                 <div class="col-md-5 col-xs-offset-4">
 
                     <div class="top_btn_sec">
                         <a href="javascript:;" class="btn btn-default" (click)="emitContact()"><span>Find your brand</span></a>
-                        <a href="javascript:;" class="btn btn-primary" (click)="orderNow();"><span>Order now</span></a>
+                        <a href="javascript:;" class="btn btn-primary" (click)="orderNow();" data-toggle="modal" data-target="#myModal"><span>Order now</span></a>
                     </div>
 
                 </div>

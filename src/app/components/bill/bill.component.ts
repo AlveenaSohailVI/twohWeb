@@ -144,6 +144,9 @@ export class BillComponent implements OnInit {
     }
     localStorage.setItem("myCart", JSON.stringify(newCart));
     this.updateBill();
+    if(this.items.length < 1 )
+    this.router.navigate(['/buyNow']);
+    
 
   }
   updateBill() {

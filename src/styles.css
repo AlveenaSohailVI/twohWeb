@@ -30,6 +30,9 @@ div.intro {
 div.intro>div {
     margin: 100px;
 }
+input:focus{
+    outline: none !important;
+}
 
 input[type=number] {
     -moz-appearance: textfield;

@@ -13,6 +13,7 @@ declare var $;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, DoCheck {
+  show = false;
   @ViewChild('subscribeModal')
   subscribeModal: ModalComponent;
   subscribeForm;
@@ -120,10 +121,29 @@ export class HomeComponent implements OnInit, DoCheck {
   }
   BuyNow() {
     localStorage.removeItem('obj');
+    // this.routerLink = '/buyNow';
+    $("#usuk").hide();
     if (localStorage.getItem('user') == null)
       this.loginmodal.open();
     else if (localStorage.getItem('user') != null)
+      this.show = true;
+    
+    // localStorage.removeItem('obj');
+    // if (localStorage.getItem('user') == null)
+    //   this.loginmodal.open();
+    // else if (localStorage.getItem('user') != null)
+    //   this.router.navigate(['/buyNow']);
+  }
+  selectCountry(country) {
+    this.show = false;
+    console.log(country);
+    if (country === 'usa') {
       this.router.navigate(['/buyNow']);
+    }
+    else if(country === 'uk') {
+      this.router.navigate(['/buyNowuk']);
+    }
+
   }
   doLogin(user) {
     this.Api.loginUser(user)

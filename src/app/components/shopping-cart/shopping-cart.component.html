@@ -7,13 +7,13 @@
             <div class="col-md-4 pull-right">
                     <div class="sidebar_sec">
                       
-                      <h2>Bran</h2>
+                      <h2>Brand</h2>
                     
                       <div class="sidebar_slider">
                          <div class="item">
                               <div class="brand_logo">
                                   <ul>
-                                      <li *ngFor="let brand of brandsrow1; let i = index;">
+                                      <li class="imgList"  *ngFor="let brand of brandsrow1; let i = index;">
                                           <a href="{{brand.url}}" target="_blank"><img src="{{brand.image}}" alt="{{brand.name}}" class="img-zoom"/></a>
                                       </li>
                                   </ul>
@@ -67,7 +67,7 @@
                 </div>
                 
                 <div class="handbag_form">
-                <label>Additional info</label>
+                <label>Additional information</label>
                         <input id="info{{ index  }}{{ i }}" type="text" placeholder="Size & Color" class="input-md form-control" [(ngModel)]="item.info ">
                 </div>
                 

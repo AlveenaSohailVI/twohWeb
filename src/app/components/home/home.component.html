@@ -1,3 +1,40 @@
+
+
+<div class="modal modals"  id="myModal" role="dialog" *ngIf='show'>
+    <!-- <div class="modal-dialog"> -->
+
+        <!-- Modal content-->
+        <!-- <div class="modal-content"> -->
+            <!-- <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div> -->
+            <!-- <div class="modal-body"> -->
+                    <div class="language-popup">
+
+                <h2>Please select</h2>
+
+                <div class="flag-box" data-dismiss="modal" (click)='selectCountry("usa")'>
+                    <img src="assets/images/flag1.png" alt="" />
+                    <span>United
+                        <br> States</span>
+                </div>
+
+                <div class="flag-box" data-dismiss="modal">
+                    <img src="assets/images/flag2.png" alt="" (click)='selectCountry("uk")' />
+                    <span>United
+                        <br> Kingdom</span>
+                </div>
+                    </div>
+            <!-- </div> -->
+            <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div> -->
+        <!-- </div> -->
+
+    <!-- </div> -->
+</div>
+
 <section (click)="closeMenu()">
     <div class="header" id="header">
 
@@ -24,7 +61,7 @@
               <img [src]="banner.image" alt="*"/>
               <div class="btn_sec">
                <a routerLink="/home" fragment="services"  class="fragment btn btn-default cus"><span><i class="fa fa-play-circle" aria-hidden="true"></i> How it works</span></a>
-               <a href="javaScript:void(0)" (click)="BuyNow();" class="btn btn-default withbg"><span>Order Now</span></a>
+               <a href="javaScript:void(0)" (click)="BuyNow();" data-toggle="modal" data-target="#myModal" class="btn btn-default withbg"><span>Order Now</span></a>
               </div>
             </div>
             

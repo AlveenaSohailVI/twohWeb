@@ -1,14 +1,22 @@
 <section class="small-section light-background" (click)="closeMenu()">
     <div class="relative container align-left">
         <div class="row">
-            <div class="col-md-8" *ngIf="!showDetail">
-                <h1 class="hs-line-11 font-alt mb-0">Shopping Cart</h1>
+            <div class="col-md-12" *ngIf="!showDetail">
+                <!-- <h1 class="hs-line-11 font-alt mb-0">Shopping Cart</h1> -->
+                <div class="shopping-cart">
+                    <h2>Shoping Cart</h2>
+                    <a class="addmore" routerLink='/buyNow' href="javascript:;">Add More Item
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
             </div>
             <div class="col-md-12 " *ngIf="showDetail">
-                    <div class="shopping-cart">
-                            <h2>Checkout</h2>
-                            <a class="addmore" href="javascript:;">Add More Item<i class="fa fa-angle-right"></i></a>
-                        </div>
+                <div class="shopping-cart">
+                    <h2>Checkout</h2>
+                    <a class="addmore" routerLink='/buyNow' href="javascript:;">Add More Item
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
             </div>
             <div class="col-md-4 mt-30">
             </div>
@@ -18,7 +26,7 @@
 <section class="page-section light-background" (click)="closeMenu()" *ngIf="showBill">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-sm-12">
+            <div class="col-md-9 col-sm-12">
                 <table class="table table-striped shopping-cart-table" style="margin-top: 0">
                     <tr>
                         <th class="hidden-xs">
@@ -35,65 +43,105 @@
                     </tr>
                     <tr *ngFor="let item of items; let i = index">
                         <td class="hidden-xs">
-                            <a href="javaScript:void(0)"><img class="image" [src]="item.image" alt="" /></a>
+                            <a href="javaScript:void(0)">
+                                <img class="image" [src]="item.image" alt="" />
+                            </a>
                         </td>
                         <td style="width: 50%;">
-                            <a href="javaScript:void(0)" title="">{{item.title}}</a> 
+                            <a href="javaScript:void(0)" title="">{{item.title}}</a>
                         </td>
                         <td>
                             {{item.price|currency:'USD':true}}
                         </td>
                         <td>
-                            <a href="javaScript:void(0)" (click)="Delete(item)"><i class="fa fa-times"></i> <span class="hidden-xs">Remove</span></a>
+                            <a href="javaScript:void(0)" (click)="Delete(item)">
+                                <i class="fa fa-times"></i>
+                                <span class="hidden-xs">Remove</span>
+                            </a>
                         </td>
                     </tr>
                 </table>
                 <hr />
             </div>
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-3 col-sm-12">
                 <div style="background-color: f2f2f2;">
                     <div class="text align-right" style="width: 100%; margin-right: 25px">
                         <div>
                         </div>
                     </div>
                     <div class="text align-right pt-10 " style="width: 100%">
-                        <div class="text align-right pt-10 bill-div">
-                            <div>Total Amount of the Cart : <strong class="pull-right">{{bill.total_amount|currency:'USD':true}}</strong></div>
-                            <div>Total Shipping from US to Pak : <strong class="pull-right">{{bill.total_shipping|currency:'USD':true}}</strong></div>
-                            <div *ngIf='bill.brand_shipping != undefined'>Brand Shipping : <strong class="pull-right">{{bill.brand_shipping|currency:'USD':true}}</strong></div>
-                            <div>Taxes : <strong class="pull-right">{{bill.tax|currency:'USD':true:'1.2'}}</strong> </div>
-                            <div>Service Charges : <strong class="pull-right">{{bill.service_charges|currency:'USD':true}}</strong></div>
-                            <div> Total (USD) : <strong class="pull-right">{{bill.grand_total|currency:'USD':true}}</strong></div>
-                            <div class="mb-10">Delivery Charges from US to Pak : <strong class="pull-right">{{bill.delivery_charges|currency:'PKR':true}}</strong></div>
-                            <div class="imp-bill mt-0"> Total (PKR) : <strong class="pull-right">{{bill.price_pkr|currency:'PKR':true}}</strong></div>
-                            <div class="mt-0"> Security Deposit : <strong class="pull-right">{{bill.security_deposit|currency:'PKR':true}}</strong></div>
-                            <div class="mt-0"> Cash On Delivery : <strong class="pull-right">{{bill.cod|currency:'PKR':true}}</strong></div>
+                        <div class="amount-bar">
+
+                            <div class="text align-right pt-10 bill-div">
+                                <div class="list">
+                                    <div class="title">Total Amount of the Cart :
+                                    </div>
+                                    <div class="amount">
+                                        {{bill.total_amount|currency:'USD':true}}</div>
+                                </div>
+                                <div class="list">
+                                        <div class="title">
+                                    Total Shipping from US to Pak :
+                                        </div>
+                                        <div class="amount">{{bill.total_shipping|currency:'USD':true}}</div>
+                                </div>
+                                <div class="list" *ngIf='bill.brand_shipping != undefined'>
+                                        <div class="title">Brand Shipping :</div>
+                                        <div class="amount">{{bill.brand_shipping|currency:'USD':true}}</div>
+                                </div>
+                                <div class="list">
+                                        <div class="title">Taxes :</div>
+                                        <div class="amount">{{bill.tax|currency:'USD':true:'1.2'}}</div>
+                                </div>
+                                <div class="list">
+                                        <div class="title">Service Charges :</div>
+                                        <div class="amount">{{bill.service_charges|currency:'USD':true}}</div>
+                                </div>
+                                <div class="list "> <div class="title">Total (USD) :</div>
+                                <div class="amount">{{bill.grand_total|currency:'USD':true}}</div>
+                                </div>
+                                <div class="mb-10 list"><div class="title">Delivery Charges from US to Pak :</div>
+                                <div class="amount">{{bill.delivery_charges|currency:'PKR':true}}</div>
+                                </div>
+                                <div class="imp-bill mt-0 list blurbar"> <div class="title">Total (PKR) :</div>
+                                <div class="amount">{{bill.price_pkr|currency:'PKR':true}}</div>
+                                </div>
+                                <div class="mt-0 list"> <div class="title">Security Deposit :</div>
+                                <div class="amount">{{bill.security_deposit|currency:'PKR':true}}</div>
+                                </div>
+                                <div class="mt-0 list"> <div class="title">Cash On Delivery :</div>
+                                <div class="amount">{{bill.cod|currency:'PKR':true}}</div>
+                                </div>
+                            </div>
+                            <div *ngIf="bill.discountMessage != undefined" class="alert success" style="margin-top: 10px;width: 100%;text-align: center">
+                                <i class="fa fa-lg fa-check-circle-o"></i>{{bill.discountMessage}}</div>
+                            <div *ngIf="bill.discountMessage != undefined" style="margin-top: 5px; width: 100%">
+                                <button class="btn btn-mod btn-round btn-small" (click)="DeletePromo()">Delete Promo</button>
+                            </div>
+                            <div class="discount-sec" style="margin-top: 5px; width: 100%" *ngIf="bill.discountMessage == undefined">
+
+                                <form class="form contact-form" id="Promo-Form" [formGroup]="PromoForm" (ngSubmit)="RedeemPromo(PromoForm.value)">
+                                    <input type="text" [formControl]="PromoForm.controls['promo']" style="width:100%" class="input-sm round form-control col-8" placeholder="Enter promo code"
+                                        required>
+                                    <!-- <button class="submit_btn btn btn-mod btn-round btn-small col-4" id="reg-btn" type="submit" [disabled]="!PromoForm.valid"
+                                        style="padding: 5px">Redeem Promo</button> -->
+                            <input type="submit" id="reg-btn" [disabled]="!PromoForm.valid" value="redeem code" name="redeem code">
+                                        
+                                </form>
+
+                            </div>
+
+
+                            <hr class="mb-60" />
+                            <div class="row" id="promo" style="margin-top: 10px; margin-left: 10px; margin-right: 10px;">
+                            </div>
+
+                            <div style="margin-top: 10px">
+                                <!-- <button class="btn btn-mod btn-round btn-small pull-left col-5 col-offset-1" routerLink='/buyNow' style="padding: 10px">Add More Items</button> -->
+                                 <!-- <a href="javaScript:void(0)" class="btn btn-mod btn-round btn-small pull-right col-6" (click)="showDetails()" style="padding: 10px">Proceed to Checkout</a> --> 
+                                <input type="button" class="proceed-btn" value="proceed to checkout" (click)="showDetails()">
+                            </div>
                         </div>
-                        <div *ngIf="bill.discountMessage != undefined" class="alert success" style="margin-top: 10px;width: 100%;text-align: center"><i class="fa fa-lg fa-check-circle-o"></i>{{bill.discountMessage}}</div>
-                        <div *ngIf="bill.discountMessage != undefined" style="margin-top: 5px; width: 100%">
-                            <button class="btn btn-mod btn-round btn-small" (click)="DeletePromo()">Delete Promo</button>
-                        </div>
-                        <div style="margin-top: 5px; width: 100%" *ngIf="bill.discountMessage == undefined">
-
-                            <form class="form contact-form" id="Promo-Form" [formGroup]="PromoForm" (ngSubmit)="RedeemPromo(PromoForm.value)">
-                                <input type="text" [formControl]="PromoForm.controls['promo']" class="input-sm round form-control col-8" placeholder="Enter promo code"
-                                    required>
-                                    <button class="submit_btn btn btn-mod btn-round btn-small col-4" id="reg-btn" type="submit" [disabled]="!PromoForm.valid"
-                                        style="padding: 5px">Redeem Promo</button>
-                            </form>
-
-                        </div>
-
-
-                        <hr class="mb-60" />
-                        <div class="row" id="promo" style="margin-top: 10px; margin-left: 10px; margin-right: 10px;">
-                        </div>
-
-                        <div style="margin-top: 10px">
-                            <button class="btn btn-mod btn-round btn-small pull-left col-5 col-offset-1" routerLink='/buyNow' style="padding: 10px">Add More Items</button>
-                            <a href="javaScript:void(0)" class="btn btn-mod btn-round btn-small pull-right col-6" (click)="showDetails()" style="padding: 10px">Proceed to Checkout</a>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -106,134 +154,130 @@
 
         <div class="row">
 
-            <div class="col-md-8 col-sm-12" style="text-align: left">
-                <div class="card bill-card" style="background-color: #f2f2f2">
-                    <div style="display: inherit">
-                        <div class="col-8">
-                            <h4 class="card-title">Shipping Address</h4>
-                        </div>
-                        <div class="col-4">
-                            <button class="btn btn-mod btn-border btn-medium pull-right btn-change" *ngIf="!editingAddress" (click)="editingAddress = !editingAddress">Change</button>
-                            <button class="btn btn-mod btn-border btn-medium pull-right btn-change" *ngIf="editingAddress" (click)="editProfile(complexForm.value);editingAddress = !editingAddress"
-                                [disabled]="!complexForm.controls['address'].valid || !complexForm.controls['city'].valid || !complexForm.controls['country'].valid">Save</button>
-                        </div>
-                    </div>
-                    <div class="card-block">
-
-                        <hr />
-                        <p class="card-text">{{user.displayName}}</p>
-                        <p class="card-text" *ngIf="!editingAddress">{{user.address}} , {{user.city}} , {{user.country}}.</p>
-                        <form class="form shipping-details" id="contact_form" [formGroup]="complexForm" *ngIf="editingAddress">
-                            <div class="clearfix">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label for="address"> Street Address :</label>
-                                        <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['address'].valid && complexForm.controls['address'].touched}">
-                                            <input type="text" [formControl]="complexForm.controls['address']" class="input-md round form-control" id="address" placeholder="Address">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="address"> City :</label>
-                                        <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['city'].valid && complexForm.controls['city'].touched}">
-                                            <input type="text" [formControl]="complexForm.controls['city']" class="input-md round form-control" id="city" placeholder="City">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="address"> Country :</label>
-                                        <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['country'].valid && complexForm.controls['country'].touched}">
-                                            <input type="text" [formControl]="complexForm.controls['country']" class="input-md round form-control" id="country" placeholder="Country">
-                                        </div>
-                                    </div>
-                                </div>
+            <div class="col-md-9 col-sm-12">
+                <div class="address-detail">
+                    <div>
+                        <div>
+                            <div>
+                                <h3>Shipping Address</h3>
                             </div>
-                        </form>
-
-                    </div>
-                </div>
-                <div class="card bill-card" style="background-color: #f2f2f2">
-                    <div style="display: inherit">
-                        <div class="col-8">
-                            <h4 class="card-title">Shipping Method</h4>
+                            <div>
+                                <button class="btn btn-mod changebtn  btn-medium pull-right btn-change" *ngIf="!editingAddress" (click)="editingAddress = !editingAddress">Change</button>
+                                <button class="btn btn-mod changebtn  btn-medium pull-right btn-change" *ngIf="editingAddress" (click)="editProfile(complexForm.value);editingAddress = !editingAddress"
+                                    [disabled]="!complexForm.controls['address'].valid || !complexForm.controls['city'].valid || !complexForm.controls['country'].valid">Save</button>
+                            </div>
                         </div>
-                        <div class="col-4">
-                        </div>
-                    </div>
-                    <div class="card-block">
+                        <div>
 
-                        <hr />
-                        <p class="card-text">Standard Free</p>
-                        <p class="card-text">Transit Time : 20 - 30 days</p>
-
-                    </div>
-                </div>
-                <div class="card bill-card" style="background-color: #f2f2f2">
-                    <div style="display: inherit">
-                        <div class="col-8">
-                            <h4 class="card-title">Order Details</h4>
-                        </div>
-                    </div>
-                    <div class="card-block">
-
-                        <hr />
-                        <div class="card-text">
-                            <p>If any of your products run out of stock or if the price changes:</p>
-                            <form class="form" [formGroup]="checkBox" (ngSubmit)="submit()">
-                                <div style="display: inline-flex" [ngClass]="{'has-error':!checkBox.controls['value'].valid && checkBox.controls['value'].touched}">
-                                    <input type="radio" name="orderConditions" value="Purchase whatever is available" id="orderConditions" style="width: 20px;margin-right: 5px"
-                                        [formControl]="checkBox.controls['value']">
-                                        <label for="orderConditions" style="cursor: pointer">Purchase whatever is available</label>
-                                </div>
-                                <br />
-                                <div style="display: inline-flex" [ngClass]="{'has-error':!checkBox.controls['value'].valid && checkBox.controls['value'].touched}">
-                                    <input type="radio" name="orderConditions" value="Contact me" id="orderConditions2" style="width: 20px;margin-right: 5px"
-                                        [formControl]="checkBox.controls['value']">
-                                        <label for="orderConditions2" style="cursor: pointer">Contact me</label>
+                            <p>{{user.displayName}}</p>
+                            <p *ngIf="!editingAddress">{{user.address}} , {{user.city}} , {{user.country}}.</p>
+                            <form class="form shipping-details" id="contact_form" [formGroup]="complexForm" *ngIf="editingAddress">
+                                <div class="clearfix">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="address"> Street Address :</label>
+                                            <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['address'].valid && complexForm.controls['address'].touched}">
+                                                <input type="text" [formControl]="complexForm.controls['address']" class="input-md round form-control" id="address" placeholder="Address">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="address"> City :</label>
+                                            <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['city'].valid && complexForm.controls['city'].touched}">
+                                                <input type="text" [formControl]="complexForm.controls['city']" class="input-md round form-control" id="city" placeholder="City">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="address"> Country :</label>
+                                            <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['country'].valid && complexForm.controls['country'].touched}">
+                                                <input type="text" [formControl]="complexForm.controls['country']" class="input-md round form-control" id="country" placeholder="Country">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
 
                         </div>
-
                     </div>
-                </div>
-                <div class="card bill-card" style="background-color: #f2f2f2">
-                    <div style="display: inherit">
-                        <div class="col-8">
-                            <h4 class="card-title">Contact Info</h4>
-                        </div>
-                        <div class="col-4">
-                            <button class="btn btn-mod btn-border btn-medium pull-right btn-change" (click)="editingInfo = !editingInfo" *ngIf="!editingInfo">Change</button>
-                            <button class="btn btn-mod btn-border btn-medium pull-right btn-change" (click)="editProfile(complexForm.value);editingInfo = !editingInfo"
-                                *ngIf="editingInfo" [disabled]="!complexForm.valid">Save</button>
-                        </div>
-                    </div>
-                    <div class="card-block">
-
-                        <hr />
-                        <p class="card-text" *ngIf="!editingInfo">{{user.phone}}</p>
-                        <p class="card-text" style="text-transform: none" *ngIf="!editingInfo">{{user.email}}</p>
-                        <form *ngIf="editingInfo" class="form shipping-details" id="contact_form" [formGroup]="complexForm">
-                            <div class="clearfix">
-                                <label>Phone Number :
-                                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['PhoneNo'].valid && complexForm.controls['PhoneNo'].touched}">
-                                        <input type="text" [formControl]="complexForm.controls['PhoneNo']" class="input-md round form-control" placeholder="Phone Number"
-                                            >
-                                    </div>
-                                    </label>
-                                <label>Email :
-                                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['Email'].valid && complexForm.controls['Email'].touched}">
-                                        <input type="text" [formControl]="complexForm.controls['Email']" class="input-md round form-control" placeholder="Email"
-                                           required>
-                                    </div>
-                                    </label>
+                    <div>
+                        <div>
+                            <div class="col-8">
+                                <h3 class="card-title">Shipping Method</h3>
                             </div>
-                        </form>
+                            <div class="col-4">
+                            </div>
+                        </div>
+                        <div>
+
+                            <p class="card-text">Standard Free</p>
+                            <p class="card-text">Transit Time : 20 - 30 days</p>
+
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div class="col-8">
+                                <h3>Order Details</h3>
+                            </div>
+                        </div>
+                        <div>
+
+                            <div>
+                                <p>If any of your products run out of stock or if the price changes:</p>
+                                <form class="form" [formGroup]="checkBox" (ngSubmit)="submit()">
+                                    <div style="display: inline-flex" [ngClass]="{'has-error':!checkBox.controls['value'].valid && checkBox.controls['value'].touched}">
+                                        <input type="radio" name="orderConditions" value="Purchase whatever is available" id="orderConditions" style="width: 20px;margin-right: 5px"
+                                            [formControl]="checkBox.controls['value']">
+                                        <label for="orderConditions" style="cursor: pointer">Purchase whatever is available</label>
+                                    </div>
+                                    <br />
+                                    <div style="display: inline-flex" [ngClass]="{'has-error':!checkBox.controls['value'].valid && checkBox.controls['value'].touched}">
+                                        <input type="radio" name="orderConditions" value="Contact me" id="orderConditions2" style="width: 20px;margin-right: 5px"
+                                            [formControl]="checkBox.controls['value']">
+                                        <label for="orderConditions2" style="cursor: pointer">Contact me</label>
+                                    </div>
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div class="col-8">
+                                <h3>Contact Info</h3>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn savebtn btn-mod btn-border btn-medium pull-right btn-change" (click)="editingInfo = !editingInfo" *ngIf="!editingInfo">Change</button>
+                                <button class="btn savebtn btn-mod btn-border btn-medium pull-right btn-change" (click)="editProfile(complexForm.value);editingInfo = !editingInfo"
+                                    *ngIf="editingInfo" [disabled]="!complexForm.valid">Save</button>
+                            </div>
+                        </div>
+                        <div class="card-block">
+
+                            <p class="card-text" *ngIf="!editingInfo">{{user.phone}}</p>
+                            <p class="card-text" style="text-transform: none" *ngIf="!editingInfo">{{user.email}}</p>
+                            <form *ngIf="editingInfo" class="form shipping-details" id="contact_form" [formGroup]="complexForm">
+                                <div class="clearfix">
+                                    <label>Phone Number :
+                                        <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['PhoneNo'].valid && complexForm.controls['PhoneNo'].touched}">
+                                            <input type="text" [formControl]="complexForm.controls['PhoneNo']" class="input-md round form-control" placeholder="Phone Number">
+                                        </div>
+                                    </label>
+                                    <label>Email :
+                                        <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['Email'].valid && complexForm.controls['Email'].touched}">
+                                            <input type="text" [formControl]="complexForm.controls['Email']" class="input-md round form-control" placeholder="Email"
+                                                required>
+                                        </div>
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-
             </div>
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-3 col-sm-12">
 
-                <table class="table table-striped shopping-cart-table small-table">
+                <!-- <table class="table table-striped shopping-cart-table small-table">
                     <tr>
                         <th class="hidden-xs">
                             Photo
@@ -258,34 +302,72 @@
                         </td>
                     </tr>
 
-                </table>
+                </table> -->
 
-                <hr />
                 <div class="text align-right pt-10 bill-div" style="width: 100%">
+                    <div class="amount-bar">
+                        <div class="list ">
+                            <div class="title">
+                                Total Amount of the Cart :
+                            </div>
+                            <div class="amount">{{bill.total_amount|currency:'USD':true}}</div>
+                        </div>
+                        <div class="list">
+                            <div class="title">
+                                Total Shipping from US to Pak :
+                            </div>
+                            <div class="amount">{{bill.total_shipping|currency:'USD':true}}</div>
+                        </div>
+                        <div class="list" *ngIf='bill.brand_shipping != undefined'>
+                            <div class="title">Brand Shipping :</div>
+                            <div class="amount">{{bill.brand_shipping|currency:'USD':true}}</div>
+                        </div>
+                        <div class="list">
+                            <div class="title">
+                                Taxes :</div>
+                            <div class="amount">{{bill.tax|currency:'USD':true:'1.2'}}</div>
+                        </div>
+                        <div class="list">
+                            <div class="title"> Service Charges :</div>
+                            <div class="amount">{{bill.service_charges|currency:'USD':true}}</div>
+                        </div>
+                        <div class="list">
+                            <div class="title"> Total (USD) :</div>
+                            <div class="amount">{{bill.grand_total|currency:'USD':true}}</div>
+                        </div>
+                        <div class="mb-10 list">
+                            <div class="title">Delivery Charges from US to Pak :</div>
+                            <div class="amount">{{bill.delivery_charges|currency:'PKR':true}}</div>
+                        </div>
+                        <div class="imp-bill mt-0 list blurbar">
+                            <div class="title">Total (PKR) :</div>
+                            <div class="amount">{{bill.price_pkr|currency:'PKR':true}}</div>
+                        </div>
+                        <div class="mt-0 list">
+                            <div class="title">Security Deposit :</div>
+                            <div class="amount">{{bill.security_deposit|currency:'PKR':true}}</div>
+                        </div>
+                        <div class="mt-0 list">
+                            <div class="title">Cash On Delivery :</div>
+                            <div class="amount">{{bill.cod|currency:'PKR':true}}</div>
+                        </div>
+                        <div *ngIf="bill.discountMessage != undefined" class="alert success" style="margin-top: 10px;width: 100%;text-align: center">
+                            <i class="fa fa-lg fa-check-circle-o"></i>{{bill.discountMessage}}</div>
+                        <!-- <div class="discount-sec">
+                            <input type="text" name="text" placeholder="Enter promo code">
+                            <input type="submit" value="redeem code" name="redeem code">
+                        </div> -->
 
+                        <!-- <input type="submit" class="proceed-btn" value="proceed to checkout" name="proceed to checkout"> -->
 
-                    <div>Total Amount of the Cart : <strong class="pull-right">{{bill.total_amount|currency:'USD':true}}</strong></div>
-                    <div>Total Shipping from US to Pak : <strong class="pull-right">{{bill.total_shipping|currency:'USD':true}}</strong></div>
-                    <div *ngIf='bill.brand_shipping != undefined'>Brand Shipping : <strong class="pull-right">{{bill.brand_shipping|currency:'USD':true}}</strong></div>
-                    <div>Taxes : <strong class="pull-right">{{bill.tax|currency:'USD':true:'1.2'}}</strong> </div>
-                    <div>Service Charges : <strong class="pull-right">{{bill.service_charges|currency:'USD':true}}</strong></div>
-                    <div> Total (USD) : <strong class="pull-right">{{bill.grand_total|currency:'USD':true}}</strong></div>
-                    <div class="mb-10">Delivery Charges from US to Pak : <strong class="pull-right">{{bill.delivery_charges|currency:'PKR':true}}</strong></div>
-                    <div class="imp-bill mt-0"> Total (PKR) : <strong class="pull-right">{{bill.price_pkr|currency:'PKR':true}}</strong></div>
-                    <div class="mt-0"> Security Deposit : <strong class="pull-right">{{bill.security_deposit|currency:'PKR':true}}</strong></div>
-                    <div class="mt-0"> Cash On Delivery : <strong class="pull-right">{{bill.cod|currency:'PKR':true}}</strong></div>
-                    <div *ngIf="bill.discountMessage != undefined" class="alert success" style="margin-top: 10px;width: 100%;text-align: center"><i class="fa fa-lg fa-check-circle-o"></i>{{bill.discountMessage}}</div>
-
-                    <div>
-                        <button class="btn btn-mod btn-round btn-full" [disabled]="!checkBox.valid || user.address == undefined" style="padding: 10px"
-                            (click)="postOrder()" style="margin-top: 20px;padding: 10px">Place Order</button>
                     </div>
-
+                    <div class="list blurbar">
+                        <input type="button" class="proceed-btn" value="Place order" [disabled]="!checkBox.valid || user.address == undefined"
+                            (click)="postOrder()">
+                    </div>
                 </div>
-
-
-
-
+                <!-- <button class="proceed-btn" [disabled]="!checkBox.valid || user.address == undefined"
+                            (click)="postOrder()" >Place Order</button> -->
 
 
             </div>
@@ -317,7 +399,7 @@
                 <p>If you have any queries please fell free to contact at sales@twohonline.com</p>
                 <div style="text-align: center">
                     <button class="btn btn-mod btn-round btn-medium" (click)="Checkout();checkoutModal.close();">
-                            Checkout
+                        Checkout
                     </button>
                 </div>
             </div>
@@ -343,8 +425,8 @@
 
 
         <button class="btn btn-mod btn-round btn-medium" (click)="modal.close();paymentModal.open()">
-                            Checkout
-                    </button>
+            Checkout
+        </button>
     </modal-footer>
 </modal>
 <modal #promoModal>
@@ -362,13 +444,13 @@
     <modal-footer>
 
         <button class="btn btn-mod btn-round btn-medium" (click)="promoModal.dismiss();">
-                            Cancel
-                    </button>
+            Cancel
+        </button>
         <button class="btn btn-mod btn-round btn-medium" (click)="RedeemPromo(promo.value);promoModal.close()" *ngIf="promo.value.length == 10">
-                            Enter
-                    </button>
+            Enter
+        </button>
         <button type="button" class="btn btn-mod btn-medium btn-round btn-w" *ngIf="promo.value.length != 10">
-                        Enter</button>
+            Enter</button>
     </modal-footer>
 </modal>
 
@@ -397,8 +479,8 @@
     </modal-body>
     <modal-footer>
         <button class="btn btn-mod btn-round btn-medium" (click)="doLogin({usernameOrEmail:email.value,password:pass.value});">
-                            Login
-                    </button>
+            Login
+        </button>
     </modal-footer>
 </modal>
 <modal #paymentModal>
@@ -416,11 +498,11 @@
 
         <div style="width: 100%">
             <button class="btn btn-mod btn-round btn-medium" (click)="paymentModal.close()">
-                            EasyPay
-                    </button>
+                EasyPay
+            </button>
             <button class="btn btn-mod btn-round btn-medium" (click)="paymentModal.close();Checkout()">
-                            Cash On Delivery
-                    </button>
+                Cash On Delivery
+            </button>
         </div>
     </modal-footer>
 </modal>
@@ -517,17 +599,16 @@
         <form class="form shipping-details" id="contact_form" [formGroup]="complexForm" (ngSubmit)="editProfile(complexForm.value);editContactModal.close()">
             <div class="clearfix">
                 <label>Phone Number :
-                                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['PhoneNo'].valid && complexForm.controls['PhoneNo'].touched}">
-                                        <input type="text" [formControl]="complexForm.controls['PhoneNo']" class="input-md round form-control" placeholder="Phone Number"
-                                            >
-                                    </div>
-                                    </label>
+                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['PhoneNo'].valid && complexForm.controls['PhoneNo'].touched}">
+                        <input type="text" [formControl]="complexForm.controls['PhoneNo']" class="input-md round form-control" placeholder="Phone Number">
+                    </div>
+                </label>
                 <label>Email :
-                                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['Email'].valid && complexForm.controls['Email'].touched}">
-                                        <input type="text" [formControl]="complexForm.controls['Email']" class="input-md round form-control" placeholder="Email"
-                                           required>
-                                    </div>
-                                    </label>
+                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['Email'].valid && complexForm.controls['Email'].touched}">
+                        <input type="text" [formControl]="complexForm.controls['Email']" class="input-md round form-control" placeholder="Email"
+                            required>
+                    </div>
+                </label>
 
             </div>
 
@@ -562,8 +643,8 @@
         <div style="width: 100%">
 
             <button class="btn btn-mod btn-round btn-medium" (click)="Checkout();checkoutModal.close();">
-                            Checkout
-                    </button>
+                Checkout
+            </button>
         </div>
     </modal-footer>
 </modal>

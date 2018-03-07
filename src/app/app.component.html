@@ -1,41 +1,41 @@
-    <!-- Trigger the modal with a button -->
-    <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+<!-- Trigger the modal with a button -->
+<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
 
-    <!-- Modal -->
-    <div class="modal modals"  id="myModal" role="dialog" *ngIf='show'>
-        <!-- <div class="modal-dialog"> -->
+<!-- Modal -->
+<div class="modal modals" id="myModal" role="dialog" *ngIf='show'>
+    <!-- <div class="modal-dialog"> -->
 
-            <!-- Modal content-->
-            <!-- <div class="modal-content"> -->
-                <!-- <div class="modal-header">
+    <!-- Modal content-->
+    <!-- <div class="modal-content"> -->
+    <!-- <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Modal Header</h4>
               </div> -->
-                <!-- <div class="modal-body"> -->
-                        <div class="language-popup">
+    <!-- <div class="modal-body"> -->
+    <div class="language-popup">
 
-                    <h2>Please select</h2>
+        <h2>Please select</h2>
 
-                    <div class="flag-box" data-dismiss="modal" (click)='selectCountry("usa")'>
-                        <img src="assets/images/flag1.png" alt="" />
-                        <span>United
-                            <br> States</span>
-                    </div>
+        <div class="flag-box" data-dismiss="modal" (click)='selectCountry("usa")'>
+            <img src="assets/images/flag1.png" alt="" />
+            <span>United
+                <br> States</span>
+        </div>
 
-                    <div class="flag-box" data-dismiss="modal">
-                        <img src="assets/images/flag2.png" alt="" (click)='selectCountry("uk")' />
-                        <span>United
-                            <br> Kingdom</span>
-                    </div>
-                        </div>
-                <!-- </div> -->
-                <!-- <div class="modal-footer">
+        <div class="flag-box" data-dismiss="modal">
+            <img src="assets/images/flag2.png" alt="" (click)='selectCountry("uk")' />
+            <span>United
+                <br> Kingdom</span>
+        </div>
+    </div>
+    <!-- </div> -->
+    <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div> -->
-            <!-- </div> -->
+    <!-- </div> -->
 
-        <!-- </div> -->
-    </div>
+    <!-- </div> -->
+</div>
 
 
 <!-- Navigation panel -->
@@ -156,14 +156,17 @@
                             <img src="assets/images/user_icon.png" alt="" />
                             <i class="fa fa-angle-down"></i>
                         </a>
-                        
+
                         <ul class="sub to-left" style="display: none;color:white;padding:0" id="user-details">
-                                
+
                             <li style="color:white;margin:0;display:block">
-                                <a style="color:white" id='displayName' href="javaScript:void(0)" (click)='menu()' class="nav-list-items" routerLink="/profile" style="font-size: 12px;text-transform: none !important">{{Api.getUserFirstName()}}</a>
+                                <!-- <a style="color:white" id='displayName' href="javaScript:void(0)" (click)='menu()' class="nav-list-items" routerLink="/profile"
+                                    style="font-size: 12px;text-transform: none !important">{{Api.getUserFirstName()}}</a> -->
+                                    <a style="color:white" id='displayName' href="javaScript:void(0)" (click)='menu()' class="nav-list-items" 
+                                    style="font-size: 12px;text-transform: none !important">{{Api.getUserFirstName()}}</a>
                             </li>
                             <li>
-                                <a href="javaScript:void(0)" class="nav-list-items" (click)="GoToOrders()" style="font-size: 12px;text-transform: none !important">My Orders</a>
+                                <a href="javaScript:void(0)" class="nav-list-items" (click)="GoToOrders()" style="font-size: 12px;text-transform: none !important">History</a>
                             </li>
                             <li>
                                 <a href="javaScript:void(0)" class="nav-list-items" (click)="Logout()" style="text-transform: none !important">Logout
@@ -172,23 +175,23 @@
                             </li>
                         </ul>
                     </span>
-                    
-                    
+
+
                     <a href="javascript:;"></a>
                     <span>
-                            <a (click)="BuyNow()" id="odr" href="javascript:;" class="button" data-toggle="modal" data-target="#myModal">
-                                <span>
-                                    <i class="fa fa-shopping-basket"></i>Order Now</span>
-                            </a>
-                            <ul class="sub to-left" id="usuk" style="display: none;">
-                                <li>
-                                    <a  (click)="BuyNow()" class="nav-list-items" href="javascript:;">USA</a>
-                                </li>
-                                <li>
-                                    <a (click)="BuyNowuk()" class="nav-list-items" href="javascript:;">UK</a>
-                                </li>
-                            </ul>
-                        </span>
+                        <a (click)="BuyNow()" id="odr" href="javascript:;" class="button" data-toggle="modal" data-target="#myModal">
+                            <span>
+                                <i class="fa fa-shopping-basket"></i>Order Now</span>
+                        </a>
+                        <ul class="sub to-left" id="usuk" style="display: none;">
+                            <li>
+                                <a (click)="BuyNow()" class="nav-list-items" href="javascript:;">USA</a>
+                            </li>
+                            <li>
+                                <a (click)="BuyNowuk()" class="nav-list-items" href="javascript:;">UK</a>
+                            </li>
+                        </ul>
+                    </span>
 
                     <div class="hidden cart_sec" id="order">
                         <a href="javaScript:void(0)" (click)='checkBill()'>
@@ -202,18 +205,24 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="javaScript:void(0)" routerLink="/bill" class="nav-list-items" *ngIf="Api.hasBill()">Proceed to Checkout</a>
+                                <a href="javaScript:void(0)"  (click)='goToCart()' style="font-size: 12px;text-transform: none !important" class="nav-list-items"
+                                    *ngIf="Api.hasBill()">View Cart</a>
+                            </li>
+                            <li>
+                                <a href="javaScript:void(0)" (click)="GoToOrders()" style="font-size: 12px;text-transform: none !important" class="nav-list-items"
+                                    *ngIf="Api.hasBill()">History</a>
+                            </li>
+                            <li>
+                                <a href="javaScript:void(0)" (click)="Logout()" style="font-size: 12px;text-transform: none !important" class="nav-list-items"
+                                    *ngIf="Api.hasBill()">Logout
+                                    <i class="fa fa-sign-out" aria-hidden="true" style="margin-left: 10px"></i>
+
+                                </a>
                             </li>
                         </ul>
                     </div>
-                    
-                    
-                    
                 </div>
-                
-                
             </div>
-
         </div>
         <!-- </div> -->
     </div>

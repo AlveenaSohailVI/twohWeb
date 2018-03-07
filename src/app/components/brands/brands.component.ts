@@ -1,10 +1,15 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { SpinnerService } from '../../apiServices/spinner.service';
 import { ApiService } from '../../apiServices/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BrandsService } from '../../apiServices/brands.service';
 import { BrandsukService } from '../../apiServices/brandsuk.service';
 import { HomeComponent } from '../home/home.component';
+import { Router } from '@angular/router';
+
+declare var $;
+
 
 @Component({
   selector: 'app-brands',
@@ -12,6 +17,9 @@ import { HomeComponent } from '../home/home.component';
   styleUrls: ['./brands.component.css']
 })
 export class BrandsComponent implements OnInit {
+  show = false;
+  @ViewChild('loginModal')
+  loginmodal: ModalComponent;
   brand = { name: '', url: '', description: '', image: '' };
   constructor(
     private spinner: SpinnerService,
@@ -19,7 +27,8 @@ export class BrandsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private _brands: BrandsService,
     private _brandsuk: BrandsukService,
-    private homeComponent: HomeComponent
+    private homeComponent: HomeComponent,
+    private router: Router,
     
   ) {
     this.setBrands();
@@ -76,8 +85,36 @@ export class BrandsComponent implements OnInit {
     }
   }
   orderNow() {
-    this.homeComponent.BuyNow();
-  }
+    // this.homeComponent.BuyNow();
+    // BuyNow() {
+      localStorage.removeItem('obj');
+      // this.routerLink = '/buyNow';
+      // console.log('aaa')
+      // $("#usuk").hide();
+      // if (localStorage.getItem('user') == null){
+      // console.log('bbb');
+      //   this.loginmodal.open();
+      // }else if (localStorage.getItem('user') != null)
+        this.show = true;
+      
+      // localStorage.removeItem('obj');
+      // if (localStorage.getItem('user') == null)
+      //   this.loginmodal.open();
+      // else if (localStorage.getItem('user') != null)
+      //   this.router.navigate(['/buyNow']);
+    }
+    selectCountry(country) {
+      this.show = false;
+      console.log(country);
+      if (country === 'usa') {
+        this.router.navigate(['/buyNow']);
+      }
+      else if(country === 'uk') {
+        this.router.navigate(['/buyNowuk']);
+      }
+  
+    }
+  
   setItemsToShow() {
 
     //breaks items array into 8 pieces

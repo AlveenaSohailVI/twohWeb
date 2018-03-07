@@ -154,12 +154,13 @@ export class AppComponent {
   BuyNow() {
     localStorage.removeItem('obj');
     this.routerLink = '/buyNow';
+    console.log('aaaa')
     $("#usuk").hide();
     if (localStorage.getItem('user') == null)
       this.loginmodal.open();
     else if (localStorage.getItem('user') != null)
       this.show = true;
-      // this.router.navigate(['/buyNowuk']);
+    // this.router.navigate(['/buyNowuk']);
   }
   selectCountry(country) {
     this.show = false;
@@ -167,7 +168,7 @@ export class AppComponent {
     if (country === 'usa') {
       this.router.navigate(['/buyNow']);
     }
-    else if(country === 'uk') {
+    else if (country === 'uk') {
       this.router.navigate(['/buyNowuk']);
     }
 
@@ -219,10 +220,16 @@ export class AppComponent {
     else if (localStorage.getItem('user') != null)
       this.router.navigate(['/profile/orders']);
     document.getElementById('user-details').style.display = 'none';
+    document.getElementById('cart-list').style.display = 'none';
 
   }
   odrdropdown() {
     $("#usuk").toggle();
+  }
+  goToCart() {
+    this.router.navigate(['/bill']);
+    document.getElementById('cart-list').style.display = 'none';
+
   }
 
   gotoLoginPage() {

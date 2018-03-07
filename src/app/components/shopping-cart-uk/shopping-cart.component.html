@@ -21,7 +21,7 @@
                               </div>
                          </div>
               
-                          <div class="item">
+                          <!-- <div class="item">
                               <div class="brand_logo">
                                   <ul>
                                       <li *ngFor="let brand of brandsrow2; let i = index;">
@@ -29,7 +29,7 @@
                                       </li>
                                   </ul>
                               </div>
-                         </div>		
+                         </div>		 -->
                   
                          
                       </div>
@@ -68,7 +68,7 @@
                 </div>
                 
                 <div class="handbag_form">
-                <label>Additional info</label>
+                <label>Additional information</label>
                         <input id="info{{ index  }}{{ i }}" type="text" placeholder="Size & color, color etc " class="input-md form-control" [(ngModel)]="item.info ">
                 </div>
                 
@@ -98,7 +98,7 @@
        <div class="row">
         <div class="col-md-12">
          <div class="addproduct-btn">
-          <a class="addproduct-btn-bg" href="javascript:;" (click)="setToLocalStorage();ShopAgain() " routerLink="/buyNow"><span>Add More Product</span></a>
+          <a class="addproduct-btn-bg" href="javascript:;" (click)="setToLocalStorage();ShopAgain() " routerLink="/buyNowuk"><span>Add More Product</span></a>
           <button href="javascript:;" (click)="setToLocalStorage();postOrder()" style="background: transparent;vertical-align: top;"><span>Show price in PRK</span></button>
          </div>
         </div>

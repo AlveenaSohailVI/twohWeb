@@ -98,7 +98,7 @@
     /* width: 50px; */
     margin: 0 !important;
     color: white !important;
-    padding-right: 50px !important;
+    /* padding-right: 50px !important; */
 }
 
 .inner-nav ul li .sub li a {
@@ -373,6 +373,11 @@ h2 {
 .menu{
     margin-right:80px;
 }
+#orderBtn:focus{
+    outline: none;
+    border: none;
+    background-color: black;
+}
 /*  */
 
 .flag-box {
@@ -409,6 +414,9 @@ h2 {
  } 
  .language-popup{
      margin-top: -30px;
+ }
+ #odr{
+     outline: none;
  }
 
  /* .dropbar
