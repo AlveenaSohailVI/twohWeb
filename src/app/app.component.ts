@@ -222,10 +222,22 @@ export class AppComponent {
     document.getElementById('user-details').style.display = 'none';
     document.getElementById('cart-list').style.display = 'none';
 
+
   }
   odrdropdown() {
     $("#usuk").toggle();
   }
+  // hideUserMenu() {
+    // if (document.getElementById('cart-list').style.display != 'none')
+    //   document.getElementById('cart-list').style.display = 'none';
+    // if (document.getElementById('user-details').style.display != 'none')
+    //   document.getElementById('user-details').style.display = 'none';
+    // // if (document.getElementById('user-details').style.display == 'block') {
+    //   document.getElementById('user-details').style.display = 'none';
+    //   console.log('aaa');
+    // }
+
+  // }
   goToCart() {
     this.router.navigate(['/bill']);
     document.getElementById('cart-list').style.display = 'none';

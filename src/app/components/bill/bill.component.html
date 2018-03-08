@@ -27,7 +27,49 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-sm-12">
-                <table class="table table-striped shopping-cart-table" style="margin-top: 0">
+                    <div class="product-name">
+                            <div class="product-box">
+                             <ul>
+                              <li>Photo</li>
+                              <li>Product Name</li>
+                             </ul>
+                            </div>
+                            
+                             <div class="product-box">
+                             <ul>
+                              <li class="total-price">Total</li>
+                             </ul>
+                            </div>
+                            
+                           </div>
+                           
+                           <div class="item-box" *ngFor="let item of items; let i = index">
+                            
+                            <div class="select-item">
+                             <!-- <img src="assets/images/product2.jpg" alt=""/> -->
+                             <img [src]="item.image" alt=""/>
+                             
+                             
+                              <span>{{item.title}}</span>
+                            </div>
+                            
+                            <div class="select-item">
+                              <span class="price">
+                                    {{item.price|currency:'USD':true}}
+                              </span>
+                            </div>
+                            
+                             <div class="remove-button">
+                              <a href="javascript:;" (click)="Delete(item)"><i class="fa fa-times"></i>Remove</a>
+                             </div>
+                           
+                           </div>
+                           
+                            
+                            
+                            
+                           
+                <!-- <table class="table table-striped shopping-cart-table" style="margin-top: 0">
                     <tr>
                         <th class="hidden-xs">
                             Photo
@@ -61,7 +103,7 @@
                         </td>
                     </tr>
                 </table>
-                <hr />
+                <hr /> -->
             </div>
             <div class="col-md-3 col-sm-12">
                 <div style="background-color: f2f2f2;">
