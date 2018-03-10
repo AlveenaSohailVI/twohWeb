@@ -45,6 +45,138 @@
         </div> -->
         <div>
             <div class="row" id='service'>
+                <div class="content_caption">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="cont">
+                                <div class="form sign-in">
+                                    <h2>Sign In</h2>
+                                    <form id="contact_form" [formGroup]="complexForm2" (ngSubmit)="doLogin(complexForm2.value)">
+                                        <div [ngClass]="{'has-error':!complexForm2.controls['usernameOrEmail'].valid && complexForm2.controls['usernameOrEmail'].touched}">
+                                            <!-- <input type="text" [formControl]="complexForm2.controls['usernameOrEmail']" placeholder="Email" required> -->
+                                            <label>
+                                                <span>Email</span>
+                                                <input class="inputfield" type="email" [formControl]="complexForm2.controls['usernameOrEmail']" placeholder="Email" required/>
+                                            </label>
+                                        </div>
+                                        <div [ngClass]="{'has-error':!complexForm2.controls['password'].valid && complexForm2.controls['password'].touched}">
+                                            <!-- <input type="password" [formControl]="complexForm2.controls['password']" placeholder="Password"> -->
+                                            <label>
+                                                <span>Password</span>
+                                                <input class="inputfield" type="password" [formControl]="complexForm2.controls['password']" placeholder="Password" required/>
+                                            </label>
+                                        </div>
+
+                                        <p class="forgot-pass">
+                                            <a href="javascript:;" (click)="forgotPasswordModal.open()">Forgot password?</a>
+                                        </p>
+                                        <!-- <input class="button" type="submit" class="fadeIn fourth"  value="Log In"> -->
+
+                                        <button type="submit" class="submit" [ngStyle]="{'cursor' : complexForm2.valid ?  'pointer' : 'not-allowed' }" [disabled]="!complexForm2.valid">Sign In</button>
+
+                                        <button type="button" class="fb-btn" (click)="fbLogin()">Connect with
+                                            <span>facebook</span>
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="sub-cont">
+                                    <div class="img">
+                                        <div class="img__text m--up">
+                                            <h2>New here?</h2>
+                                            <p>Sign up and discover great amount of new opportunities!</p>
+                                        </div>
+                                        <div class="img__text m--in">
+                                            <h2>One of us?</h2>
+                                            <p>If you already has an account, just sign in. We've missed you!</p>
+                                        </div>
+                                        <div class="img__btn" (click)='loginAnimation()'>
+                                            <span class="m--up">Sign Up</span>
+                                            <span class="m--in">Sign In</span>
+                                        </div>
+                                    </div>
+                                    <div class="form sign-up">
+                                        <h2>Sign Up</h2>
+                                        <form id="contact_form" [formGroup]="complexForm" (ngSubmit)="Register(complexForm.value)">
+                                            <div [ngClass]="{'has-error':!complexForm.controls['first_Name'].valid && complexForm.controls['first_Name'].touched}">
+                                                <label>
+                                                    <span>First Name</span>
+                                                    <input class="inputfield" type="text" [formControl]="complexForm.controls['first_Name']" placeholder="First Name" required/>
+                                                </label>
+                                            </div>
+                                            <div [ngClass]="{'has-error':!complexForm.controls['last_Name'].valid && complexForm.controls['last_Name'].touched}">
+                                                <label>
+                                                    <span>Last Name</span>
+                                                    <input class="inputfield" type="text" [formControl]="complexForm.controls['last_Name']" placeholder="last Name" required/>
+                                                </label>
+                                            </div>
+                                            <!-- <div [ngClass]="{'has-error':!complexForm.controls['last_Name'].valid && complexForm.controls['last_Name'].touched}">
+                                                    <label>
+                                                            <span>Email</span>
+                                                            <input class="inputfield" type="text" [formControl]="complexForm.controls['last_Name']" placeholder="Last Name" />
+                                                        </label>
+                                            </div> -->
+                                            <div [ngClass]="{'has-error':!complexForm.controls['Email'].valid && complexForm.controls['Email'].touched}">
+                                                <label>
+                                                    <span>Email</span>
+                                                    <input class="inputfield" type="email" [formControl]="complexForm.controls['Email']" placeholder="Email" required/>
+                                                </label>
+                                            </div>
+                                            <div [ngClass]="{'has-error':!complexForm.controls['PhoneNo'].valid && complexForm.controls['PhoneNo'].touched}">
+                                                <label>
+                                                    <span>Phone</span>
+                                                    <input class="inputfield" type="number" [formControl]="complexForm.controls['PhoneNo']" placeholder="Phone Number" required/>
+                                                </label>
+                                            </div>
+                                            <div [ngClass]="{'has-error':!complexForm.controls['Password'].valid && complexForm.controls['Password'].touched}">
+                                                <label>
+                                                    <span>Password</span>
+                                                    <input class="inputfield" type="password" [formControl]="complexForm.controls['Password']" placeholder="Password" required/>
+                                                </label>
+                                            </div>
+
+                                            <label>
+                                                <span>Gender</span>
+                                                <div>
+                                                    <div class="gen-sec">
+                                                        <input class="inputfield"  value="Male" name="gender" type="radio" (change)='getRadioBtnVal("Male")' required
+                                                        />
+                                                        <span>Male</span>
+                                                    </div>
+                                                    <div class="gen-sec">
+                                                        <input class="inputfield"  value="Female" name="gender" type="radio" (change)='getRadioBtnVal("Female")' required
+                                                        />
+                                                        <span>Female</span>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <br>
+                                            <br>
+
+
+                                            <div [ngClass]="{'has-error':!complexForm.controls['checked'].valid && complexForm.controls['checked'].touched}">
+                                                <input type="checkbox" [formControl]="complexForm.controls['checked']" name="terms" value="terms" style="width:20px;display:inline;margin-bottm:10px" required>
+                                                <!-- <span> Accept
+                        <a routerLink="/terms" target="_blank">Terms & Conditions</a>
+                    </span> -->
+                                                <span>Accept
+                                                    <!-- <a href="javascript:;" routerLink="/terms">Term & Condition</a> -->
+                                                    <a href="javascript:;">Term & Condition</a>
+
+                                                </span>
+                                            </div>
+
+                                            <button type="submit" class="submit" style="margin-top:17px" [ngStyle]="{'cursor' : complexForm.valid ?  'pointer' : 'not-allowed' }"
+                                                [disabled]="!complexForm.valid">Sign Up</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
                 <!-- <div class="col-md-4 col-md-offset-4" style="text-align: center">
                     <div style="margin-top: 10px">
 
@@ -68,91 +200,7 @@
                         </div>
                     </form>
                 </div> -->
-                <div class="wrapper fadeInDown">
-                    <div id="formContent">
-                        <!-- Tabs Titles -->
-                        <h2 id='login-li' class="active" (click)="LoginShow()"> Sign In </h2>
-                        <h2 class="inactive underlineHover" id='registration-li' (click)="showRegistration()">Sign Up </h2>
 
-                        <!-- Icon -->
-                        <div class="fadeIn first">
-
-                            <i style="color:rgb(94, 90, 90);font-size:90px" class="fa fa-user"></i>
-
-
-                            <!-- <img src="https://www.valveworldexpo.com/cache/pica/8/5/7/5/2/311831477925548/icon_kontakt_portalfarbe_4-3.png" id="icon" alt="User Icon" /> -->
-                        </div>
-
-                        <!-- Login Form -->
-                        <div *ngIf="showLogin">
-                            <form class="form contact-form" id="contact_form" [formGroup]="complexForm2" (ngSubmit)="doLogin(complexForm2.value)">
-                                <div class="form-group" class="fadeIn second" [ngClass]="{'has-error':!complexForm2.controls['usernameOrEmail'].valid && complexForm2.controls['usernameOrEmail'].touched}">
-                                    <input type="text" [formControl]="complexForm2.controls['usernameOrEmail']" placeholder="Email" required>
-                                </div>
-                                <div class="form-group" class="fadeIn second" [ngClass]="{'has-error':!complexForm2.controls['password'].valid && complexForm2.controls['password'].touched}">
-                                    <input type="password" [formControl]="complexForm2.controls['password']" placeholder="Password">
-                                </div>
-                                <div id="alert"></div>
-
-                                <input class="button" type="submit" class="fadeIn fourth" [disabled]="!complexForm2.valid" value="Log In">
-                                <!-- <div > -->
-                                    <br>
-                                    <button *ngIf="showLogin" class="btn btn-mod btn-medium btn-round btn-full btn-facebook" style="background-color:#3B5998;font-size:20px;position:relative;bottom:5px" (click)="fbLogin()">
-                                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                                    </button>
-                                <!-- </div> -->
-                            </form>
-                        </div>
-                        <div *ngIf="!showLogin">
-                            <form class="form contact-form" id="contact_form" [formGroup]="complexForm" (ngSubmit)="Register(complexForm.value)">
-                                <div class="form-group" class="fadeIn second" [ngClass]="{'has-error':!complexForm.controls['first_Name'].valid && complexForm.controls['first_Name'].touched}">
-                                    <input type="text" [formControl]="complexForm.controls['first_Name']" placeholder="First Name">
-                                </div>
-
-
-                                <div class="form-group" class="fadeIn second" [ngClass]="{'has-error':!complexForm.controls['last_Name'].valid && complexForm.controls['last_Name'].touched}">
-                                    <input type="text" [formControl]="complexForm.controls['last_Name']" placeholder="Last Name">
-                                </div>
-
-                                <div class="form-group" class="fadeIn third" [ngClass]="{'has-error':!complexForm.controls['Email'].valid && complexForm.controls['Email'].touched}">
-                                    <input type="email" [formControl]="complexForm.controls['Email']" placeholder="Email" required>
-                                </div>
-                                <div class="form-group" class="fadeIn third" [ngClass]="{'has-error':!complexForm.controls['Password'].valid && complexForm.controls['Password'].touched}">
-                                    <input type="password" [formControl]="complexForm.controls['Password']" placeholder="Password">
-                                </div>
-
-                                <div class="form-group" class="fadeIn fourth" [ngClass]="{'has-error':!complexForm.controls['PhoneNo'].valid && complexForm.controls['PhoneNo'].touched}">
-                                    <input type="text" [formControl]="complexForm.controls['PhoneNo']" placeholder="Phone Number">
-                                </div>
-                                <tabset id="gender" class="fadeIn fourth">
-                                    <tab heading='Male'></tab>
-                                    <tab>
-                                        <template tabHeading>Female</template>
-                                    </tab>
-                                </tabset>
-                                <div class="form-group" class="fadeIn fourth" [ngClass]="{'has-error':!complexForm.controls['checked'].valid && complexForm.controls['checked'].touched}"
-                                    style="text-align: left;margin-left: 35px;margin-top: 10px">
-                                    <input type="checkbox" [formControl]="complexForm.controls['checked']" name="terms" value="terms">
-                                    <span style="margin-left: 5px"> Accept
-                                        <a routerLink="/terms" target="_blank">Terms & Conditions</a>
-                                    </span>
-                                </div>
-                                <div id="alert"></div>
-
-
-
-                                <input class="button" type="submit" class="fadeIn fourth" [disabled]="!complexForm.valid" value="Register">
-
-                            </form>
-                        </div>
-                        <!-- Remind Passowrd -->
-                        <div id="formFooter">
-                            <a class="underlineHover" (click)="forgotPasswordModal.open()">Forgot Password?</a>
-                        </div>
-
-
-                    </div>
-                </div>
             </div>
         </div>
         <div id="registration" *ngIf="!showLogin">
@@ -236,3 +284,12 @@
         </button>
     </modal-footer>
 </modal>
+
+<script src="../../../assets/js/jquery-1.10.2.min.js"></script>
+<script src="../../../assets/js/custom.js"></script>
+<script src="../../../assets/js/slick.min.js"></script>
+<script src="../../../assets/js/bootstrap.min.js"></script>
+<script src="../../../assets/js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>

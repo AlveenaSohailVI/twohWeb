@@ -238,7 +238,9 @@
     </nav>
     <!-- End Navigation panel -->
     <app-spinner></app-spinner>
+    <div (click)="closeMenu()">
     <router-outlet></router-outlet>
+    </div>
     <app-footer id="footer"></app-footer>
     <modal #loginModal>
         <modal-header>

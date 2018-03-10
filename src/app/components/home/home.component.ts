@@ -78,16 +78,16 @@ export class HomeComponent implements OnInit, DoCheck {
     .subscribe(
       (data)=>{
         this.spinner.stop();
-        console.log(data);
+        // console.log(data);
         this.banners = data;
-        console.log("Banners");
-        console.log(this.banners)
+        // console.log("Banners");
+        // console.log(this.banners)
       },
       (err)=>{
-        console.log(err);
+        // console.log(err);
       },
       ()=>{
-        console.log("Banner api called");
+        // console.log("Banner api called");
       }
     )
   }
@@ -95,7 +95,7 @@ export class HomeComponent implements OnInit, DoCheck {
       this.Api.subscribe(Email)
       .subscribe(
         (data)=>{
-          console.log(data);
+          // console.log(data);
           document.getElementById('subscribeMsg').innerHTML = '<div class="alert alert-success">Successfully subscribed</div>'
            this.spinner.stop();
           setTimeout(
@@ -105,7 +105,7 @@ export class HomeComponent implements OnInit, DoCheck {
           
         },
         (err)=>{
-          console.log(err);
+          // console.log(err);
           document.getElementById('subscribeMsg').innerHTML = '<div class="alert alert-danger">'+JSON.parse(err._body).message+'</div>'
            this.spinner.stop();
           
@@ -117,7 +117,7 @@ export class HomeComponent implements OnInit, DoCheck {
       document.getElementById('cart-list').style.display = 'none';
     if (document.getElementById('user-details').style.display != 'none')
       document.getElementById('user-details').style.display = 'none';
-      console.log('closeMenu')
+      // console.log('closeMenu')
   }
   BuyNow() {
     localStorage.removeItem('obj');
@@ -136,7 +136,7 @@ export class HomeComponent implements OnInit, DoCheck {
   }
   selectCountry(country) {
     this.show = false;
-    console.log(country);
+    // console.log(country);
     if (country === 'usa') {
       this.router.navigate(['/buyNow']);
     }
@@ -150,7 +150,7 @@ export class HomeComponent implements OnInit, DoCheck {
       .subscribe(
       (data) => {
         this.spinner.stop();
-        console.log(data);
+        // console.log(data);
         let user = data;
         localStorage.setItem('user', JSON.stringify(user));
         this.loginmodal.close();
@@ -163,21 +163,21 @@ export class HomeComponent implements OnInit, DoCheck {
 
       },
       (error) => {
-        console.log(error);
+        // console.log(error);
         let msg = JSON.parse(error._body);
         document.getElementById('alert').innerHTML = "<div class='alert alert-danger' role='alert'>" + msg.message + "</div>	";
         this.spinner.stop()
 
       },
       () => {
-        console.log("Completed")
+        // console.log("Completed")
       }
       )
   }
   fbLogin() {
     this.fb.login().then(
       (response: FacebookLoginResponse) => {
-        console.log(response);
+        // console.log(response);
         this.spinner.stop();
         this.fb.api('/me' + "?" + "access_token=" + response.authResponse.accessToken + "&fields=id,name,email,picture,first_name,last_name,birthday,gender")
           .then(
@@ -199,13 +199,13 @@ export class HomeComponent implements OnInit, DoCheck {
             };
 
 
-            console.log("fb", data);
+            // console.log("fb", data);
             this.spinner.stop();
-            console.log(this.socialLogin.email)
+            // console.log(this.socialLogin.email)
             this.Api.loginUser(this.socialLogin)
               .subscribe(
               (data) => {
-                console.log("register : ", data);
+                // console.log("register : ", data);
                 this.spinner.stop();
                 localStorage.setItem('user', JSON.stringify(data));
                 this.userLogin = true;
@@ -217,7 +217,7 @@ export class HomeComponent implements OnInit, DoCheck {
                 this.router.navigate(['/buyNow']);
               },
               (err) => {
-                console.log(err);
+                // console.log(err);
                 this.loginmodal.close();
                 this.spinner.stop()
               }
@@ -226,7 +226,7 @@ export class HomeComponent implements OnInit, DoCheck {
 
           },
           (err) => {
-            console.log(err);
+            // console.log(err);
           }
           )
       },
@@ -234,12 +234,12 @@ export class HomeComponent implements OnInit, DoCheck {
     );
   }
   PostMessage(form){
-    console.log(form);
+    // console.log(form);
     this.Api.postMessage(form)
       .subscribe(
       (data) => {
         this.spinner.stop();
-        console.log(data);
+        // console.log(data);
         document.getElementById('contact-modal-alert').innerHTML = '<div class="alert alert-success">'+data.message+'</div>';
         this.contactForm.reset();
         setTimeout(
@@ -249,7 +249,7 @@ export class HomeComponent implements OnInit, DoCheck {
             },3000)
       },
       (err) => {
-        console.log(err);
+        // console.log(err);
         document.getElementById('contact-modal-alert').innerHTML = '<div class="alert alert-danger">'+JSON.parse(err._body).message+'</div>'
         setTimeout(
             ()=>{

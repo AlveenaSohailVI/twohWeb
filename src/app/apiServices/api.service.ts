@@ -59,7 +59,7 @@ ordersuks
         return this._http.post(this.signInApi, data)
             .map(data => {
                 data.json();
-                console.log("I CAN SEE DATA HERE: ", data.json());
+                // console.log("I CAN SEE DATA HERE: ", data.json());
                 return data.json();
             });
     }
@@ -67,7 +67,7 @@ ordersuks
         return this._http.post(this.registerApi, data)
             .map(data => {
                 data.json();
-                console.log("I CAN SEE DATA HERE: ", data.json());
+                // console.log("I CAN SEE DATA HERE: ", data.json());
                 return data.json();
             });
     }
@@ -75,7 +75,7 @@ ordersuks
         return this._http.put(this.editUserApi, data)
             .map(data => {
                 data.json();
-                console.log("I CAN SEE DATA HERE: ", data.json());
+                // console.log("I CAN SEE DATA HERE: ", data.json());
                 return data.json();
             });
     }
@@ -83,7 +83,7 @@ ordersuks
         return this._http.post(this.forgotPasswordApi, data)
             .map(data => {
                 data.json();
-                console.log("I CAN SEE DATA HERE: ", data.json());
+                // console.log("I CAN SEE DATA HERE: ", data.json());
                 return data.json();
             });
     }
@@ -91,7 +91,7 @@ ordersuks
         return this._http.post(this.resetPasswordApi + '/' + token, data)
             .map(data => {
                 data.json();
-                console.log("I CAN SEE DATA HERE: ", data.json());
+                // console.log("I CAN SEE DATA HERE: ", data.json());
                 return data.json();
             });
     }
@@ -99,7 +99,7 @@ ordersuks
         return this._http.get(this.bannerApi)
             .map(data => {
                 data.json();
-                console.log("I CAN SEE DATA HERE: ", data.json());
+                // console.log("I CAN SEE DATA HERE: ", data.json());
                 return data.json();
             });
     }
@@ -115,7 +115,7 @@ ordersuks
         return this._http.get(this.brandsApi)
             .map(data => {
                 data.json();
-                console.log("I CAN SEE DATA HERE: ", data.json());
+                // console.log("I CAN SEE DATA HERE: ", data.json());
                 return data.json();
             });
     }
@@ -123,7 +123,7 @@ ordersuks
         return this._http.get(this.brandsUkApi)
             .map(data => {
                 data.json();
-                console.log("brands uk: ", data.json());
+                // console.log("brands uk: ", data.json());
                 return data.json();
             });
     }
@@ -132,7 +132,7 @@ ordersuks
             .post(this.contactApi, obj)
             .map(data => {
                 data.json();
-                console.log("message: ", data.json());
+                // console.log("message: ", data.json());
                 return data.json();
             });
     }
@@ -141,7 +141,7 @@ ordersuks
             .get(this.dealsApi)
             .map(data => {
                 data.json();
-                console.log("Deals: ", data.json());
+                // console.log("Deals: ", data.json());
                 return data.json();
             });
     }
@@ -151,7 +151,7 @@ ordersuks
             .post(this.orderApi, obj)
             .map(data => {
                 data.json();
-                console.log("I CAN SEE DATA HERE: ", data.json());
+                // console.log("I CAN SEE DATA HERE: ", data.json());   
                 return data.json();
             });
     }
@@ -161,7 +161,7 @@ ordersuks
                     .post(this.orderukApi, obj)
                     .map(data => {
                         data.json();
-                        console.log("I CAN SEE DATA HERE: ", data.json());
+                        // console.log("I CAN SEE DATA HERE: ", data.json());
                         return data.json();
                     });
     }
@@ -170,7 +170,7 @@ ordersuks
             .post(this.scrapApi, obj)
             .map(data => {
                 data.json();
-                console.log("I CAN SEE SCRAP DATA HERE: ", data.json());
+                // console.log("I CAN SEE SCRAP DATA HERE: ", data.json());
                 return data.json();
             });
     }
@@ -179,7 +179,7 @@ ordersuks
             .post(this.checkRatesApi, obj)
             .map(data => {
                 data.json();
-                console.log("I CAN SEE DATA HERE: ", data.json());
+                // console.log("I CAN SEE DATA HERE: ", data.json());
                 return data.json();
             });
     }
@@ -188,7 +188,7 @@ ordersuks
             .post(this.checkRatesukApi, obj)
             .map(data => {
                 data.json();
-                console.log("I CAN SEE DATA HERE: ", data.json());
+                // console.log("I CAN SEE DATA HERE: ", data.json());
                 return data.json();
             });
     }
@@ -197,7 +197,7 @@ ordersuks
             .get(this.getOrderApi)
             .map(data => {
                 data.json();
-                console.log("Get Orders: ", data.json());
+                // console.log("Get Orders: ", data.json());
                 return data.json();
             });
     }
@@ -206,7 +206,7 @@ ordersuks
             .get(this.getOrderukApi)
             .map(data => {
                 data.json();
-                console.log("Get Orders: ", data.json());
+                // console.log("Get Orders: ", data.json());
                 return data.json();
             });
     }
@@ -214,7 +214,7 @@ ordersuks
         return this._http.get(this.productsApi)
             .map(data => {
                 data.json();
-                console.log("I CAN SEE DATA HERE: ", data.json());
+                // console.log("I CAN SEE DATA HERE: ", data.json());
                 return data.json();
             });
     }
@@ -223,7 +223,7 @@ ordersuks
             .post(this.promoService, obj)
             .map(data => {
                 data.json();
-                console.log("I CAN SEE DATA HERE: ", data.json());
+                // console.log("I CAN SEE DATA HERE: ", data.json());
                 return data.json();
             });
     }
@@ -231,7 +231,7 @@ ordersuks
         return this._http.get(this.reviewApi)
             .map(data => {
                 data.json();
-                console.log("reviews : ", data.json());
+                // console.log("reviews : ", data.json());
                 return data.json();
             });
     }
@@ -239,7 +239,7 @@ ordersuks
         return this._http.get(this.promotionBarsApi)
             .map(data => {
                 data.json();
-                console.log("Promotion Bar : ", data.json());
+                // console.log("Promotion Bar : ", data.json());
                 return data.json();
             });
     }
@@ -248,7 +248,7 @@ ordersuks
             .post(this.subscribeApi, obj)
             .map(data => {
                 data.json();
-                console.log("I CAN SEE DATA HERE: ", data.json());
+                // console.log("I CAN SEE DATA HERE: ", data.json());
                 return data.json();
             });
     }
@@ -257,7 +257,7 @@ ordersuks
             .post(this.deletePromoApi, {})
             .map(data => {
                 data.json();
-                console.log("I CAN SEE DATA HERE: ", data.json());
+                // console.log("I CAN SEE DATA HERE: ", data.json());
                 return data.json();
             });
     }

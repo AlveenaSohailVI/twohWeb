@@ -55,7 +55,7 @@ export class PortfolioComponent implements OnInit {
       .subscribe(
       (data) => {
         this.spinner.stop();
-        console.log(data)
+        // console.log(data)
         this.items = data;
         // this.setItemsToShow();
         setTimeout(
@@ -69,7 +69,7 @@ export class PortfolioComponent implements OnInit {
           },3000)
       },
       (err) => {
-        console.log(err)
+        // console.log(err)
       }
       )
   }
@@ -78,7 +78,7 @@ export class PortfolioComponent implements OnInit {
       document.getElementById('cart-list').style.display = 'none';
     if (document.getElementById('user-details').style.display != 'none')
       document.getElementById('user-details').style.display = 'none';
-      console.log('closeMenu')
+      // console.log('closeMenu')
   }
   
   ngOnInit() {

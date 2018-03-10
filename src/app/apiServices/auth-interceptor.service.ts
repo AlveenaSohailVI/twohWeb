@@ -17,13 +17,13 @@ export class AuthInterceptorService implements HttpInterceptor  {
        if (currentUser && currentUser.token_id) {
            request.headers.set('Authorization', currentUser.token_id );
        }
-    console.log(request);
+    // console.log(request);
     return request;
   }
  
   after(res: Observable<Response>): Observable<any> {
     //do something ...
-    console.log(res);
+    // console.log(res);
     return res;
   }
 }

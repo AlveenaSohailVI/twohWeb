@@ -1,20 +1,17 @@
-.img-zoom {
-    width: 100%;
-    transform: scale(1);
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    -o-transition: all .5s ease;
-    transition: all .5s ease;
-    position: relative;
-    top: 30% !important;
-}
 .imgList{
-    border: 1px solid red;
-    padding: 0px;
-    
+    height: 100px;
 }
-.item img {
-    width: 100%;
-    position: relative;
+
+.img-zoom{
+    /* margin-top: auto; */
+    /* margin-bottom: auto; */
+}
+.helper {
+    display: inline-block;
+    height: 100%;
     vertical-align: middle;
+}
+img{
+    vertical-align: middle;
+
 }

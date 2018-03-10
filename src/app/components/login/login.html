@@ -1,0 +1,85 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <h2 id='login-li' class="active" (click)="LoginShow()"> Sign In </h2>
+        <h2 class="inactive underlineHover" id='registration-li' (click)="showRegistration()">Sign Up </h2>
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+
+            <i style="color:rgb(94, 90, 90);font-size:90px" class="fa fa-user"></i>
+
+
+            <!-- <img src="https://www.valveworldexpo.com/cache/pica/8/5/7/5/2/311831477925548/icon_kontakt_portalfarbe_4-3.png" id="icon" alt="User Icon" /> -->
+        </div>
+
+        <!-- Login Form -->
+        <div *ngIf="showLogin">
+            <form class="form contact-form" id="contact_form" [formGroup]="complexForm2" (ngSubmit)="doLogin(complexForm2.value)">
+                <div class="form-group" class="fadeIn second" [ngClass]="{'has-error':!complexForm2.controls['usernameOrEmail'].valid && complexForm2.controls['usernameOrEmail'].touched}">
+                    <input type="text" [formControl]="complexForm2.controls['usernameOrEmail']" placeholder="Email" required>
+                </div>
+                <div class="form-group" class="fadeIn second" [ngClass]="{'has-error':!complexForm2.controls['password'].valid && complexForm2.controls['password'].touched}">
+                    <input type="password" [formControl]="complexForm2.controls['password']" placeholder="Password">
+                </div>
+                <div id="alert"></div>
+
+                <input class="button" type="submit" class="fadeIn fourth" [disabled]="!complexForm2.valid" value="Log In">
+                <!-- <div > -->
+                    <br>
+                    <button *ngIf="showLogin" class="btn btn-mod btn-medium btn-round btn-full btn-facebook" style="background-color:#3B5998;font-size:20px;position:relative;bottom:5px" (click)="fbLogin()">
+                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                    </button>
+                <!-- </div> -->
+            </form>
+        </div>
+        <div *ngIf="!showLogin">
+            <form class="form contact-form" id="contact_form" [formGroup]="complexForm" (ngSubmit)="Register(complexForm.value)">
+                <div class="form-group" class="fadeIn second" [ngClass]="{'has-error':!complexForm.controls['first_Name'].valid && complexForm.controls['first_Name'].touched}">
+                    <input type="text" [formControl]="complexForm.controls['first_Name']" placeholder="First Name">
+                </div>
+
+
+                <div class="form-group" class="fadeIn second" [ngClass]="{'has-error':!complexForm.controls['last_Name'].valid && complexForm.controls['last_Name'].touched}">
+                    <input type="text" [formControl]="complexForm.controls['last_Name']" placeholder="Last Name">
+                </div>
+
+                <div class="form-group" class="fadeIn third" [ngClass]="{'has-error':!complexForm.controls['Email'].valid && complexForm.controls['Email'].touched}">
+                    <input type="email" [formControl]="complexForm.controls['Email']" placeholder="Email" required>
+                </div>
+                <div class="form-group" class="fadeIn third" [ngClass]="{'has-error':!complexForm.controls['Password'].valid && complexForm.controls['Password'].touched}">
+                    <input type="password" [formControl]="complexForm.controls['Password']" placeholder="Password">
+                </div>
+
+                <div class="form-group" class="fadeIn fourth" [ngClass]="{'has-error':!complexForm.controls['PhoneNo'].valid && complexForm.controls['PhoneNo'].touched}">
+                    <input type="text" [formControl]="complexForm.controls['PhoneNo']" placeholder="Phone Number">
+                </div>
+                <tabset id="gender" class="fadeIn fourth">
+                    <tab heading='Male'></tab>
+                    <tab>
+                        <template tabHeading>Female</template>
+                    </tab>
+                </tabset>
+                <div class="form-group" class="fadeIn fourth" [ngClass]="{'has-error':!complexForm.controls['checked'].valid && complexForm.controls['checked'].touched}"
+                    style="text-align: left;margin-left: 35px;margin-top: 10px">
+                    <input type="checkbox" [formControl]="complexForm.controls['checked']" name="terms" value="terms">
+                    <span style="margin-left: 5px"> Accept
+                        <a routerLink="/terms" target="_blank">Terms & Conditions</a>
+                    </span>
+                </div>
+                <div id="alert"></div>
+
+
+
+                <input class="button" type="submit" class="fadeIn fourth" [disabled]="!complexForm.valid" value="Register">
+
+            </form>
+        </div>
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" (click)="forgotPasswordModal.open()">Forgot Password?</a>
+        </div>
+
+
+    </div>
+</div>

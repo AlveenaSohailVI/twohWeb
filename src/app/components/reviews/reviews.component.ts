@@ -19,11 +19,11 @@ export class ReviewsComponent implements OnInit {
       .subscribe(
         (data)=>{
             this.spinner.stop();
-            console.log("reviews : ",data);
+            // console.log("reviews : ",data);
             this.reviews = data;
         },
         (err)=>{
-            console.log(err);
+            // console.log(err);
         }
       )
     }
@@ -32,7 +32,7 @@ export class ReviewsComponent implements OnInit {
       document.getElementById('cart-list').style.display = 'none';
     if (document.getElementById('user-details').style.display != 'none')
       document.getElementById('user-details').style.display = 'none';
-      console.log('closeMenu')
+      // console.log('closeMenu')
   }
 
   ngOnInit() {

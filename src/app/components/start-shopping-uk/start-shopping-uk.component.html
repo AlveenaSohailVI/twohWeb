@@ -131,8 +131,8 @@
 
 </section>
 <modal #contactUs>
-  <modal-header style="text-align: center">
-    <h4 class="modal-title" style="width: 100%">Contact Us</h4>
+  <modal-header style="text-align: center" class='contactModal'>
+    <h4 class="modal-title" style="width: 100%">Quick Contact</h4>
     <a href="javaScript:void(0)" (click)="contactUs.close()" class="modal-icon">
             <i class="fa fa-times" aria-hidden="true"></i>
         </a>
@@ -145,16 +145,16 @@
         <div class="cf-left-col">
 
           <div class="form-group" [ngClass]="{'has-error':!contactForm.controls['name'].valid && contactForm.controls['name'].touched}">
-            <input type="text" [formControl]="contactForm.controls['name']" name="name" id="name" class="input-sm round form-control"
+            <input type="text" [formControl]="contactForm.controls['name']" name="name" id="name" class="field"
               placeholder="Name" pattern=".{3,100}" required>
           </div>
 
           <div class="form-group" [ngClass]="{'has-error':!contactForm.controls['email'].valid && contactForm.controls['email'].touched}">
-            <input type="email" [formControl]="contactForm.controls['email']" name="email" id="email" class="input-sm round form-control"
+            <input type="email" [formControl]="contactForm.controls['email']" name="email" id="email" class="field"
               placeholder="Email" pattern=".{5,100}" required>
           </div>
           <div class="form-group" [ngClass]="{'has-error':!contactForm.controls['phoneNo'].valid && contactForm.controls['phoneNo'].touched}">
-            <input type="text" [formControl]="contactForm.controls['phoneNo']" name="PhoneNo" id="PhoneNo" class="input-sm round form-control"
+            <input type="text" [formControl]="contactForm.controls['phoneNo']" name="PhoneNo" id="PhoneNo" class="field"
               placeholder="Phone Number" pattern=".{5,100}" required>
           </div>
 
@@ -163,28 +163,27 @@
         <div class="cf-right-col">
 
           <div class="form-group" [ngClass]="{'has-error':!contactForm.controls['message'].valid && contactForm.controls['message'].touched}">
-            <textarea name="message" [formControl]="contactForm.controls['message']" id="message" class="input-md round form-control"
-              style="height: 115px;" placeholder="Message"></textarea>
+            <textarea name="message" [formControl]="contactForm.controls['message']" id="message" 
+              style="height: 90px;" placeholder="Tell us  what you'd like to buy with the URL"></textarea>
           </div>
 
         </div>
 
       </div>
-      <hr/>
       <div class="clearfix">
 
         <div class="cf-left-col">
 
-          <div class="form-tip pt-20">
+          <!-- <div class="form-tip pt-20">
             <i class="fa fa-info-circle"></i> All the fields are required
-          </div>
+          </div> -->
 
         </div>
 
         <div class="cf-right-col">
 
           <div class="align-right pt-10">
-            <button type="submit" class="submit_btn btn btn-mod btn-medium btn-round" id="submit_btn" [disabled]="!contactForm.valid">Submit Message</button>
+            <button type="submit" class="submit_btn btn btn-mod btn-medium btn-round" id="submit_btn" [disabled]="!contactForm.valid">Submit</button>
           </div>
 
         </div>

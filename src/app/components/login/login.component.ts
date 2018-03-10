@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   complexForm: FormGroup;
   complexForm2: FormGroup;
   socialLogin;
+  gender;
   @ViewChild('fbModal')
   fbModal: ModalComponent;
   isEmail = false;
@@ -48,6 +49,8 @@ export class LoginComponent implements OnInit {
       Email: [null, [Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],
       PhoneNo: [null, Validators.pattern("[0-9.() +-]*")],
       Password: [null, Validators.required],
+      gender: [this.gender, Validators],
+      
       checked: [false, Validators.pattern("true")]
     })
     this.complexForm2 = formBuilder.group({
@@ -62,24 +65,31 @@ export class LoginComponent implements OnInit {
     };
     this.fb.init(fbParams);
   }
+  getRadioBtnVal(value){
+    this.gender = value;
+    // console.log(this.gender);
+  }
 
   Register(forms) {
-    let a: HTMLScriptElement = <HTMLScriptElement>document.getElementById('gender').getElementsByClassName('nav-link active')[0]
-    let Gender = a.innerText;
+    // console.log(forms);
+    // let a: HTMLScriptElement = <HTMLScriptElement>document.getElementById('gender').getElementsByClassName('nav-link active')[0]
+    // let Gender = a.innerText;
     let obj = {
       firstName: forms.first_Name,
       lastName: forms.last_Name,
       displayName: forms.first_Name + forms.last_Name,
       email: forms.Email,
-      username: "THO" + forms.first_Name.toLowerCase() + forms.last_Name.toLowerCase() + new Date(),
+      // username: "THO" + forms.first_Name.toLowerCase() + forms.last_Name.toLowerCase() + new Date(),
+      username: "THO" + forms.first_Name.toLowerCase()+ new Date(),
+      
       password: forms.Password,
       profileImageURL: "http://lorempixel.com/400/200/people/",
       DOB: forms.Date,
       phone: forms.PhoneNo,
-      gender: Gender,
+      gender: this.gender,
       address: forms.Address
     }
-    console.log(obj);
+    // console.log(obj);
     this.Api.createUser(obj)
       .subscribe((res) => {
         console.log(res);
@@ -254,6 +264,13 @@ export class LoginComponent implements OnInit {
         }, 3000)
       }
       )
+  }
+
+  loginAnimation(){
+    console.log('aaaa');
+    // document.querySelector('.img__btn').addEventListener('click', function() {
+      document.querySelector('.cont').classList.toggle('s--signup');
+  // });
   }
 
 

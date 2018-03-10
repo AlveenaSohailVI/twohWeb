@@ -51,16 +51,18 @@ export class BrandsComponent implements OnInit {
         .subscribe(
         (data) => {
           this.spinner.stop();
-          console.log(data);
+          // console.log(data);
           this.brands = data;
           this._brands.setBrands(data);
-          console.log("Brands:")
-          console.log(this.brands)
+          // console.log("Brands:")
+          // console.log(this.brands)
         },
         (err) => {
-          console.log(err);
+          // console.log(err);
         },
-        () => { console.log('Brands api called') });
+        () => {
+          //  console.log('Brands api called')
+           });
     }
   }
   setBrandsuk() {
@@ -72,16 +74,18 @@ export class BrandsComponent implements OnInit {
         .subscribe(
         (data) => {
           this.spinner.stop();
-          console.log(data);
+          // console.log(data);
           this.brandsuk = data;
           this._brandsuk.setBrands(data);
-          console.log("Brands:")
-          console.log(this.brandsuk)
+          // console.log("Brands:")
+          // console.log(this.brandsuk)
         },
         (err) => {
-          console.log(err);
+          // console.log(err);
         },
-        () => { console.log('Brands api called') });
+        () => { 
+          // console.log('Brands api called')
+         });
     }
   }
   orderNow() {
@@ -105,7 +109,7 @@ export class BrandsComponent implements OnInit {
     }
     selectCountry(country) {
       this.show = false;
-      console.log(country);
+      // console.log(country);
       if (country === 'usa') {
         this.router.navigate(['/buyNow']);
       }
@@ -136,21 +140,21 @@ export class BrandsComponent implements OnInit {
     }
     if (this.brandsToShow.length == 0)
       this.brandsToShow.push(temp);
-    console.log(this.brandsToShow);
+    // console.log(this.brandsToShow);
 
   }
 
   PostMessage(obj) {
 
-    console.log(obj);
+    // console.log(obj);
     this.Api.postMessage(obj)
       .subscribe(
       (data) => {
         this.spinner.stop();
-        console.log(data);
+        // console.log(data);
       },
       (err) => {
-        console.log(err);
+        // console.log(err);
       }
       )
   }
@@ -159,7 +163,7 @@ export class BrandsComponent implements OnInit {
       document.getElementById('cart-list').style.display = 'none';
     if (document.getElementById('user-details').style.display != 'none')
       document.getElementById('user-details').style.display = 'none';
-    console.log('closeMenu')
+    // console.log('closeMenu')
   }
 
   ngOnInit() {

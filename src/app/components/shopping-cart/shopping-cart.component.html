@@ -10,21 +10,22 @@
                       <h2>Brand</h2>
                     
                       <div class="sidebar_slider">
-                         <div class="item">
+                         <div >
                               <div class="brand_logo">
                                   <ul>
                                       <li class="imgList"  *ngFor="let brand of brandsrow1; let i = index;">
-                                          <a href="{{brand.url}}" target="_blank"><img src="{{brand.image}}" alt="{{brand.name}}" class="img-zoom"/></a>
+                                            
+                                          <a href="{{brand.url}}" target="_blank"><span class="helper"></span><img src="{{brand.image}}" alt="{{brand.name}}" class="img-zoom"/></a>
                                       </li>
                                   </ul>
                               </div>
                          </div>
               
-                          <div class="item">
+                          <div>
                               <div class="brand_logo">
                                   <ul>
-                                      <li *ngFor="let brand of brandsrow2; let i = index;">
-                                          <a href="{{brand.url}}" target="_blank"><img src="{{brand.image}}" alt="{{brand.name}}" class="img-zoom"/></a>
+                                      <li class="imgList" *ngFor="let brand of brandsrow2; let i = index;">
+                                          <a href="{{brand.url}}" target="_blank"><span class="helper"></span><img src="{{brand.image}}" alt="{{brand.name}}" class="img-zoom"/></a>
                                       </li>
                                   </ul>
                               </div>

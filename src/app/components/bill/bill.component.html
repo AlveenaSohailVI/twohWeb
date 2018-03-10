@@ -1,7 +1,7 @@
 <section class="small-section light-background" (click)="closeMenu()">
     <div class="relative container align-left">
         <div class="row">
-            <div class="col-md-12" *ngIf="!showDetail">
+            <div class="col-md-12" *ngIf="!showDetail == !showGreet">
                 <!-- <h1 class="hs-line-11 font-alt mb-0">Shopping Cart</h1> -->
                 <div class="shopping-cart">
                     <h2>Shoping Cart</h2>
@@ -18,6 +18,15 @@
                     </a>
                 </div>
             </div>
+            <div class="col-md-12" *ngIf="showGreet">
+                <!-- <h1 class="hs-line-11 font-alt mb-0">Shopping Cart</h1> -->
+                <div class="shopping-cart">
+                    <h2>Confirmation</h2>
+                    <!-- <a class="addmore" routerLink='/buyNow' href="javascript:;">Add More Item
+                        <i class="fa fa-angle-right"></i>
+                    </a> -->
+                </div>
+            </div>
             <div class="col-md-4 mt-30">
             </div>
         </div>
@@ -27,48 +36,49 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-sm-12">
-                    <div class="product-name">
-                            <div class="product-box">
-                             <ul>
-                              <li>Photo</li>
-                              <li>Product Name</li>
-                             </ul>
-                            </div>
-                            
-                             <div class="product-box">
-                             <ul>
-                              <li class="total-price">Total</li>
-                             </ul>
-                            </div>
-                            
-                           </div>
-                           
-                           <div class="item-box" *ngFor="let item of items; let i = index">
-                            
-                            <div class="select-item">
-                             <!-- <img src="assets/images/product2.jpg" alt=""/> -->
-                             <img [src]="item.image" alt=""/>
-                             
-                             
-                              <span>{{item.title}}</span>
-                            </div>
-                            
-                            <div class="select-item">
-                              <span class="price">
-                                    {{item.price|currency:'USD':true}}
-                              </span>
-                            </div>
-                            
-                             <div class="remove-button">
-                              <a href="javascript:;" (click)="Delete(item)"><i class="fa fa-times"></i>Remove</a>
-                             </div>
-                           
-                           </div>
-                           
-                            
-                            
-                            
-                           
+                <div class="product-name">
+                    <div class="product-box">
+                        <ul>
+                            <li>Photo</li>
+                            <li>Product Name</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-box">
+                        <ul>
+                            <li class="total-price">Total</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="item-box" *ngFor="let item of items; let i = index">
+
+                    <div class="select-item">
+                        <!-- <img src="assets/images/product2.jpg" alt=""/> -->
+                        <img [src]="item.image" alt="" />
+
+
+                        <span>{{item.title}}</span>
+                    </div>
+
+                    <div class="select-item">
+                        <span class="price">
+                            {{item.price|currency:'USD':true}}
+                        </span>
+                    </div>
+
+                    <div class="remove-button">
+                        <a href="javascript:;" (click)="Delete(item)">
+                            <i class="fa fa-times"></i>Remove</a>
+                    </div>
+
+                </div>
+
+
+
+
+
                 <!-- <table class="table table-striped shopping-cart-table" style="margin-top: 0">
                     <tr>
                         <th class="hidden-xs">
@@ -122,37 +132,42 @@
                                         {{bill.total_amount|currency:'USD':true}}</div>
                                 </div>
                                 <div class="list">
-                                        <div class="title">
-                                    Total Shipping from US to Pak :
-                                        </div>
-                                        <div class="amount">{{bill.total_shipping|currency:'USD':true}}</div>
+                                    <div class="title">
+                                        Total Shipping from US to Pak :
+                                    </div>
+                                    <div class="amount">{{bill.total_shipping|currency:'USD':true}}</div>
                                 </div>
                                 <div class="list" *ngIf='bill.brand_shipping != undefined'>
-                                        <div class="title">Brand Shipping :</div>
-                                        <div class="amount">{{bill.brand_shipping|currency:'USD':true}}</div>
+                                    <div class="title">Brand Shipping :</div>
+                                    <div class="amount">{{bill.brand_shipping|currency:'USD':true}}</div>
                                 </div>
                                 <div class="list">
-                                        <div class="title">Taxes :</div>
-                                        <div class="amount">{{bill.tax|currency:'USD':true:'1.2'}}</div>
+                                    <div class="title">Taxes :</div>
+                                    <div class="amount">{{bill.tax|currency:'USD':true:'1.2'}}</div>
                                 </div>
                                 <div class="list">
-                                        <div class="title">Service Charges :</div>
-                                        <div class="amount">{{bill.service_charges|currency:'USD':true}}</div>
+                                    <div class="title">Service Charges :</div>
+                                    <div class="amount">{{bill.service_charges|currency:'USD':true}}</div>
                                 </div>
-                                <div class="list "> <div class="title">Total (USD) :</div>
-                                <div class="amount">{{bill.grand_total|currency:'USD':true}}</div>
+                                <div class="list ">
+                                    <div class="title">Total (USD) :</div>
+                                    <div class="amount">{{bill.grand_total|currency:'USD':true}}</div>
                                 </div>
-                                <div class="mb-10 list"><div class="title">Delivery Charges from US to Pak :</div>
-                                <div class="amount">{{bill.delivery_charges|currency:'PKR':true}}</div>
+                                <div class="mb-10 list">
+                                    <div class="title">Delivery Charges from US to Pak :</div>
+                                    <div class="amount">{{bill.delivery_charges|currency:'PKR':true}}</div>
                                 </div>
-                                <div class="imp-bill mt-0 list blurbar"> <div class="title">Total (PKR) :</div>
-                                <div class="amount">{{bill.price_pkr|currency:'PKR':true}}</div>
+                                <div class="imp-bill mt-0 list blurbar">
+                                    <div class="title">Total (PKR) :</div>
+                                    <div class="amount">{{bill.price_pkr|currency:'PKR':true}}</div>
                                 </div>
-                                <div class="mt-0 list"> <div class="title">Security Deposit :</div>
-                                <div class="amount">{{bill.security_deposit|currency:'PKR':true}}</div>
+                                <div class="mt-0 list">
+                                    <div class="title">Security Deposit :</div>
+                                    <div class="amount">{{bill.security_deposit|currency:'PKR':true}}</div>
                                 </div>
-                                <div class="mt-0 list"> <div class="title">Cash On Delivery :</div>
-                                <div class="amount">{{bill.cod|currency:'PKR':true}}</div>
+                                <div class="mt-0 list">
+                                    <div class="title">Cash On Delivery :</div>
+                                    <div class="amount">{{bill.cod|currency:'PKR':true}}</div>
                                 </div>
                             </div>
                             <div *ngIf="bill.discountMessage != undefined" class="alert success" style="margin-top: 10px;width: 100%;text-align: center">
@@ -163,12 +178,12 @@
                             <div class="discount-sec" style="margin-top: 5px; width: 100%" *ngIf="bill.discountMessage == undefined">
 
                                 <form class="form contact-form" id="Promo-Form" [formGroup]="PromoForm" (ngSubmit)="RedeemPromo(PromoForm.value)">
-                                    <input type="text" [formControl]="PromoForm.controls['promo']" style="width:100%" class="input-sm round form-control col-8" placeholder="Enter promo code"
-                                        required>
+                                    <input type="text" [formControl]="PromoForm.controls['promo']" style="width:100%" class="input-sm round form-control col-8"
+                                        placeholder="Enter promo code" required>
                                     <!-- <button class="submit_btn btn btn-mod btn-round btn-small col-4" id="reg-btn" type="submit" [disabled]="!PromoForm.valid"
                                         style="padding: 5px">Redeem Promo</button> -->
-                            <input type="submit" id="reg-btn" [disabled]="!PromoForm.valid" value="redeem code" name="redeem code">
-                                        
+                                    <input type="submit" id="reg-btn" [disabled]="!PromoForm.valid" value="redeem code" name="redeem code">
+
                                 </form>
 
                             </div>
@@ -180,7 +195,7 @@
 
                             <div style="margin-top: 10px">
                                 <!-- <button class="btn btn-mod btn-round btn-small pull-left col-5 col-offset-1" routerLink='/buyNow' style="padding: 10px">Add More Items</button> -->
-                                 <!-- <a href="javaScript:void(0)" class="btn btn-mod btn-round btn-small pull-right col-6" (click)="showDetails()" style="padding: 10px">Proceed to Checkout</a> --> 
+                                <!-- <a href="javaScript:void(0)" class="btn btn-mod btn-round btn-small pull-right col-6" (click)="showDetails()" style="padding: 10px">Proceed to Checkout</a> -->
                                 <input type="button" class="proceed-btn" value="proceed to checkout" (click)="showDetails()">
                             </div>
                         </div>
@@ -404,8 +419,7 @@
 
                     </div>
                     <div class="list blurbar">
-                        <input type="button" class="proceed-btn" value="Place order" [disabled]="!checkBox.valid || user.address == undefined"
-                            (click)="postOrder()">
+                        <input type="button" class="proceed-btn" value="Place order" [disabled]="!checkBox.valid || user.address == undefined" (click)="postOrder()">
                     </div>
                 </div>
                 <!-- <button class="proceed-btn" [disabled]="!checkBox.valid || user.address == undefined"
@@ -422,30 +436,35 @@
     </div>
 
 </section>
-<section class="bill-page page-section light-background" (click)="closeMenu()" *ngIf="showGreet">
+<!-- *ngIf="showGreet" -->
+<section (click)="closeMenu()">
     <div class="container">
-        <div class="row" style="letter-spacing: 0">
-            <div class="col-3"></div>
-            <div class="col-6" style="background-color: white;padding: 20px;text-align: left">
-                <h4 style="color: #ba0202">Thank you!</h4>
-                <p>We received your order. You'll receive an email confirming the order details shortly.</p>
-                <p *ngIf="order != undefined" style="font-weight: bold">Order Number : {{order.order_number}}</p>
-                <p *ngIf="order != undefined" style="font-weight: bold">Order Total : {{order.price_pkr|currency:'PKR':true}}</p>
-                <p>Our Sales person will contact with you in 24 hours.</p>
-                <div *ngIf="user != undefined">
-                    <div *ngIf="user.email != undefined">
-                        <p style="font-weight: bold">Your order confirmation will be sent to </p>
-                        <p>{{user.email}}</p>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="address-detail" style="margin-bottom:200px">
+
+                    <h4 style="color: #ba0202">Thank you!</h4>
+                    <p class="card-text">We received your order. You'll receive an email confirming the order details shortly.</p>
+                    <h3 class="card-title" *ngIf="order != undefined" style="font-weight: bold">Order Number : {{order.order_number}}</h3>
+                    <h3 class="card-title" *ngIf="order != undefined" style="font-weight: bold">Order Total : {{order.price_pkr|currency:'PKR':true}}</h3>
+                    <p class="card-text">Our Sales person will contact with you in 24 hours.</p>
+                    <div *ngIf="user != undefined">
+                        <div *ngIf="user.email != undefined">
+                            <p class="card-title" style="font-weight: bold">Your order confirmation will be sent to </p>
+                            <h5 class="card-title" style="font-weight: bold">{{user.email}}</h5>
+                        </div>
+                    </div>
+                    <p class="card-text">If you have any queries please fell free to contact at sales@twohonline.com</p>
+                    <div style="text-align: center">
                     </div>
                 </div>
-                <p>If you have any queries please fell free to contact at sales@twohonline.com</p>
-                <div style="text-align: center">
-                    <button class="btn btn-mod btn-round btn-medium" (click)="Checkout();checkoutModal.close();">
-                        Checkout
-                    </button>
-                </div>
             </div>
-            <div class="col-3"></div>
+            <div class="col-3">
+                <button class="btn proceed-btn btn-mod btn-round btn-medium" style="width:20%;position:relative;right:-42px" (click)="Checkout();checkoutModal.close();">
+                    Checkout
+                </button>
+
+            </div>
         </div>
     </div>
 </section>
