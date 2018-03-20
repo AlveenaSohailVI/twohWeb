@@ -396,14 +396,14 @@ span.price {
 .amount-bar .list .title
 {
     float:left;
-    width: 70%;
+    width: 51%;
 }
 
 .amount-bar .list .amount
 {
     font-size:15px;
     color:#000;
-    width:30%;
+    width:49%;
     float:right;
     text-align: right;
 }
@@ -559,14 +559,14 @@ input[type=text]:-moz-placeholder { /* Firefox 18- */
 .amount-bar .list .title
 {
     float:left;
-    width: 70%;
+    width: 51%;
 }
 
 .amount-bar .list .amount
 {
     font-size:15px;
     color:#000;
-    width:30%;
+    width:49%;
     float:right;
     text-align: right;
 }
