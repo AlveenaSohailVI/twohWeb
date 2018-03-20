@@ -6,6 +6,10 @@ div.carousel-item>img{
     height: 100%;
     width: 100%;
 }
+#reg-btn{
+    position:absolute !important;
+    left:100px !important;
+}
 .header .carousel-item{
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -117,3 +121,44 @@ h2 {
  .language-popup{
      margin-top: -30px;
  }
+
+ input[type=text],input[type=email], textarea {
+    width: 100%;
+    height: 38px;
+    border: 0;
+    background: none;
+    border: 1px solid #c4c4c4;
+    font-size: 12px;
+    padding: 0 16px;
+    outline: none;
+    color: #676767;
+    letter-spacing: 1px;
+    text-align: center;
+}
+::placeholder{
+    color: gray;
+}
+
+.field textarea {
+    height: 100px;
+    resize: none;
+    padding: 10px 17px;
+}
+h4 {
+    text-align: left ;
+    font-size: 25px;
+    font-weight: 700;
+    color: #193783;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+button{
+    border-radius: 20px;
+    text-align: center;
+    margin-left: 60px;
+    width: 260px;
+    height: 40px;
+    background-color: #052f81;
+    color: white; 
+    
+}

@@ -1,0 +1,17 @@
+.imgList{
+    height: 100px;
+}
+
+.img-zoom{
+    /* margin-top: auto; */
+    /* margin-bottom: auto; */
+}
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+img{
+    vertical-align: middle;
+
+}

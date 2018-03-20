@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Compiler } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { LocationStrategy, PathLocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { FacebookService, FacebookLoginResponse } from 'ng2-facebook-sdk';
 
@@ -100,7 +100,7 @@ import { ForBusinessComponent } from './components/for-business/for-business.com
     GlobalService,
     AuthInterceptorService, SpinnerService, ApiService,
     AuthService, NavScrollService, BrandsService, BrandsukService,
-    { provide: LocationStrategy, useClass: PathLocationStrategy }
+    // { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 

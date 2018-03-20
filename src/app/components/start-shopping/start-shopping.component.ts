@@ -135,7 +135,6 @@ export class StartShoppingComponent implements OnInit {
       document.getElementById('cart-list').style.display = 'none';
     if (document.getElementById('user-details').style.display != 'none')
       document.getElementById('user-details').style.display = 'none';
-    console.log('closeMenu')
   }
 
   PostMessage(obj) {

@@ -1,4 +1,4 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
 import { HomeComponent } from './components/home/home.component';
@@ -12,6 +12,8 @@ import { ForBusinessComponent } from './components/for-business/for-business.com
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  // { path: '**', component: HomeComponent },
+  
   { path: 'home', component: HomeComponent },
   { path: 'bill', component: BillComponent },
   { path: 'billuk', component: BillukComponent },
@@ -27,5 +29,6 @@ export const routes: Routes = [
 ];
 
 // export const routing = RouterModule.forRoot(routes);
-export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
+// ,{ useHash: true}
+export const routing: ModuleWithProviders = RouterModule.forRoot(routes,{preloadingStrategy:PreloadAllModules});
 

@@ -143,6 +143,12 @@ export class AppComponent {
     }
 
   }
+  // check(){
+  //   $('.dropbar').hide();
+
+  //       $(this).siblings('.dropbar').slideToggle();
+  //       console.log('aaaa');
+  // }
   Menu() {
     var menu: any = document.getElementsByClassName('inner-nav desktop-nav')[0]
     if (menu.style.display == "none")

@@ -78,11 +78,11 @@
     top: 100%;
     /* right: 0; */
     padding: 0;
-    background: #DB4C5F;
-    color: white !important;
+    background: #F5F5F5;
+    color: black !important;
     margin-top: 13px;
     border-radius: 4px;
-    padding: 10px;
+    /* padding: 10px; */
     z-index: 100;
     border-bottom-left-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
@@ -90,14 +90,14 @@
 }
 .sub ul li:hover
 {
-    background: white;
+    background: blue !important;
 }
 
 .sub li {
     display: block;
     /* width: 50px; */
     margin: 0 !important;
-    color: white !important;
+    color: black !important;
     /* padding-right: 50px !important; */
 }
 
@@ -130,15 +130,23 @@
 .sub li a:hover,
 .inner-nav ul li .sub li a:hover,
 .sub li a.active {
-    /* background: #A02838; */
-    
+    /* background: blue; */
     color: white !important;
+}
+.menuLi{
+    padding-left: 15px
+}
+.menuLi:hover{
+    color: white !important;    
+}
+.menuLi:hover{
+    background: rgb(238, 106, 124);
     
 }
 
 .sub li a {
     /* background: rgba(255, 255, 255, .09); */
-    color: white !important;
+    color: black !important;
     width: 500px !important;
     padding-left: 10px;
     width: 100%;

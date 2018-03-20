@@ -71,6 +71,7 @@
                                         <p class="forgot-pass">
                                             <a href="javascript:;" (click)="forgotPasswordModal.open()">Forgot password?</a>
                                         </p>
+                                        <div id='alert' style="position:relative;left:40px;color:#E45767"></div>
                                         <!-- <input class="button" type="submit" class="fadeIn fourth"  value="Log In"> -->
 
                                         <button type="submit" class="submit" [ngStyle]="{'cursor' : complexForm2.valid ?  'pointer' : 'not-allowed' }" [disabled]="!complexForm2.valid">Sign In</button>

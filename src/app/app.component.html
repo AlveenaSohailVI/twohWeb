@@ -151,25 +151,25 @@
                     <a *ngIf="!Api.isLogin()" href="#signin" class="button" fragment='service' routerLink="/login">
                         <span>Sign in</span>
                     </a>
-                    <span class="hidden" id="userLogin">
+                    <span class="hidden" id="userLogin" >
                         <a href="javaScript:void(0)" class="mn-has-sub font-xxs" (click)='menu()'>
                             <img src="assets/images/user_icon.png" alt="" />
                             <i class="fa fa-angle-down"></i>
                         </a>
 
-                        <ul class="sub to-left" style="display: none;color:white;padding:0" id="user-details">
+                        <ul class="sub to-left"  id="user-details" style="display:none">
 
-                            <li style="color:white;margin:0;display:block">
+                            <li  class='menuLi' style="color:white;margin:0;display:block">
                                 <!-- <a style="color:white" id='displayName' href="javaScript:void(0)" (click)='menu()' class="nav-list-items" routerLink="/profile"
                                     style="font-size: 12px;text-transform: none !important">{{Api.getUserFirstName()}}</a> -->
                                     <a style="color:white" id='displayName' href="javaScript:void(0)" (click)='menu()' class="nav-list-items" 
-                                    style="font-size: 12px;text-transform: none !important">{{Api.getUserFirstName()}}</a>
+                                    style="font-size: 13px;text-transform: none !important">{{Api.getUserFirstName()}}</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="javaScript:void(0)" class="nav-list-items" (click)="GoToOrders()" style="font-size: 12px;text-transform: none !important">History</a>
-                            </li>
-                            <li>
-                                <a href="javaScript:void(0)" class="nav-list-items" (click)="Logout()" style="text-transform: none !important">Logout
+                            </li> -->
+                            <li class='menuLi'>
+                                <a href="javaScript:void(0)" class="nav-list-items" (click)="Logout()" style="font-size: 13px;text-transform: none !important">Logout
                                     <i class="fa fa-sign-out" aria-hidden="true" style="margin-left: 10px"></i>
                                 </a>
                             </li>
@@ -199,21 +199,21 @@
                         </a>
                         <span id="myCart">0</span>
                         <ul class="sub to-left" style="display: none;" *ngIf='bill != undefined' id="cart-list">
-                            <li *ngFor="let item of bill.items">
+                            <li class='menuLi' *ngFor="let item of bill.items">
                                 <a href="javaScript:void(0)" class="cart-items font-xxs nav-list-items" [ngClass]="{'hidden':item.url == undefined}">{{item.url |summary}}
-                                    <i class="fa fa-trash-o pull-right" (click)="Delete(item)"></i>
+                                    <!-- <i style="position:relative;bottom:-5px" class="fa fa-trash-o pull-right" (click)="Delete(item)"></i> -->
                                 </a>
                             </li>
-                            <li>
+                            <li class='menuLi'>
                                 <a href="javaScript:void(0)"  (click)='goToCart()' style="font-size: 12px;text-transform: none !important" class="nav-list-items"
                                     *ngIf="Api.hasBill()">View Cart</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="javaScript:void(0)" (click)="GoToOrders()" style="font-size: 12px;text-transform: none !important" class="nav-list-items"
                                     *ngIf="Api.hasBill()">History</a>
-                            </li>
-                            <li>
-                                <a href="javaScript:void(0)" (click)="Logout()" style="font-size: 12px;text-transform: none !important" class="nav-list-items"
+                            </li> -->
+                            <li class='menuLi'>
+                                <a href="javaScript:void(0)" (click)="Logout()" style="text-transform: none !important" class="nav-list-items"
                                     *ngIf="Api.hasBill()">Logout
                                     <i class="fa fa-sign-out" aria-hidden="true" style="margin-left: 10px"></i>
 
@@ -274,7 +274,7 @@
                                 <span style="color: grey"> Don't have an account? </span>
                                 <a href="javaScript:void(0)" style="text-decoration: none" (click)="loginModal.close();gotoLoginPage()"> Sign up </a>
                             </div>
-                            <button class="submit_btn btn btn-mod btn-medium btn-round col-6" id="reg-btn" type="submit" [disabled]="!loginForm.valid">Login</button>
+                            <button class="submit_btn btn btn-mod btn-medium btn-round col-6" id="reg-btn" style="float:right" type="submit" [disabled]="!loginForm.valid">Login</button>
                         </div>
                     </form>
 

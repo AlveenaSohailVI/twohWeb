@@ -144,7 +144,8 @@ export class BillukComponent implements OnInit {
     }
     localStorage.setItem("myCart", JSON.stringify(newCart));
     this.updateBill();
-
+    if(this.items.length < 1 )
+    this.router.navigate(['/buyNowuk']);
   }
   updateBill() {
     let orderItems = [];
@@ -235,7 +236,6 @@ export class BillukComponent implements OnInit {
         let msg = JSON.parse(error._body);
         document.getElementById('alert').innerHTML = "<div class='alert alert-danger' role='alert'>" + msg.message + "</div>	";
         this.onError401(error);
-
       },
       () => {
         console.log("Completed")
