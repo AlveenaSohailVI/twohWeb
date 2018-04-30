@@ -6,7 +6,7 @@ import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component'
 
 const routes: Routes = [
   { path: '', component: StartShoppingComponent },
-  { path: 'shopingCart', component: ShoppingCartComponent }
+  { path: 'shoppingCart', component: ShoppingCartComponent }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);

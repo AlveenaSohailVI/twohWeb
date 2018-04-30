@@ -367,12 +367,12 @@ span.price {
 }
 .address-detail h3 {
     color: #2a3f74;
-    font-size: 13px;
+    font-size: 1px;
     text-transform: uppercase;
     font-weight: bold;
 }
 .address-detail p {
-    font-size: 12px;
+    font-size: 13px;
     margin: 0;
     line-height: 20px;
 }
@@ -743,6 +743,9 @@ span.price {
     font-weight: 700;
     font-size: 15px;
 }
+/* p{
+    font-size: 50px !important;
+} */
 
 
 

@@ -290,13 +290,13 @@
                                     <div style="display: inline-flex" [ngClass]="{'has-error':!checkBox.controls['value'].valid && checkBox.controls['value'].touched}">
                                         <input type="radio" name="orderConditions" value="Purchase whatever is available" id="orderConditions" style="width: 20px;margin-right: 5px"
                                             [formControl]="checkBox.controls['value']">
-                                        <label for="orderConditions" style="cursor: pointer">Purchase whatever is available</label>
+                                        <label for="orderConditions" style="cursor: pointer"><p>Purchase whatever is available</p></label>
                                     </div>
                                     <br />
                                     <div style="display: inline-flex" [ngClass]="{'has-error':!checkBox.controls['value'].valid && checkBox.controls['value'].touched}">
                                         <input type="radio" name="orderConditions" value="Contact me" id="orderConditions2" style="width: 20px;margin-right: 5px"
                                             [formControl]="checkBox.controls['value']">
-                                        <label for="orderConditions2" style="cursor: pointer">Contact me</label>
+                                        <label for="orderConditions2" style="cursor: pointer"><p>Contact me</p></label>
                                     </div>
                                 </form>
 
@@ -466,9 +466,9 @@
                 </div>
             </div>
             <div class="col-3">
-                <button class="btn proceed-btn btn-mod btn-round btn-medium" style="width:20%;position:relative;right:-42px" (click)="Checkout();checkoutModal.close();">
+                <!-- <button class="btn proceed-btn btn-mod btn-round btn-medium" style="width:20%;position:relative;right:-42px" (click)="Checkout();checkoutModal.close();">
                     Checkout
-                </button>
+                </button> -->
 
             </div>
         </div>

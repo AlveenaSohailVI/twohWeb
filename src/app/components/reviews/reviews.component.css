@@ -15,6 +15,9 @@
 /* .review-col{
         min-height: 300px
 } */
+.feature_slider .slick-prev{
+        display: none !important;
+}
 .testi_box{
         border: 1px solid black;
         float: left;

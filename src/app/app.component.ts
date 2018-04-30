@@ -168,8 +168,10 @@ export class AppComponent {
     this.routerLink = '/buyNow';
     // console.log('aaaa')
     $("#usuk").hide();
-    if (localStorage.getItem('user') == null)
-      this.loginmodal.open();
+    if (localStorage.getItem('user') == null) {
+      // this.loginmodal.open();
+      this.router.navigate(['/login'],{fragment : 'service'});
+    }
     else if (localStorage.getItem('user') != null)
       this.show = true;
     // this.router.navigate(['/buyNowuk']);
@@ -183,10 +185,8 @@ export class AppComponent {
     else if (country === 'uk') {
       this.router.navigate(['/buyNowuk']);
     }
-
   }
   BuyNowuk() {
-
     localStorage.removeItem('obj');
     this.routerLink = '/buyNowuk';
     $("#usuk").hide();
@@ -199,30 +199,30 @@ export class AppComponent {
   doLogin(user) {
     this.Api.loginUser(user)
       .subscribe(
-      (data) => {
-        this.spinner.stop();
-        // console.log(data);
-        let user = data;
-        localStorage.setItem('user', JSON.stringify(user));
-        this.loginmodal.close();
-        // document.getElementById('abc').innerText= "Log Out";
-        // document.getElementById('order').setAttribute('class', '');
-        // document.getElementById('userLogin').setAttribute('class', '');
-        // this.userLogin = true;
-        this.user = JSON.parse(localStorage.getItem('user'));
-        this.router.navigate([this.routerLink]);
+        (data) => {
+          this.spinner.stop();
+          // console.log(data);
+          let user = data;
+          localStorage.setItem('user', JSON.stringify(user));
+          this.loginmodal.close();
+          // document.getElementById('abc').innerText= "Log Out";
+          // document.getElementById('order').setAttribute('class', '');
+          // document.getElementById('userLogin').setAttribute('class', '');
+          // this.userLogin = true;
+          this.user = JSON.parse(localStorage.getItem('user'));
+          this.router.navigate([this.routerLink]);
 
-      },
-      (error) => {
-        // console.log(error);
-        let msg = JSON.parse(error._body);
-        document.getElementById('alert').innerHTML = "<div class='alert alert-danger' role='alert'>" + msg.message + "</div>	";
-        this.spinner.stop()
+        },
+        (error) => {
+          // console.log(error);
+          let msg = JSON.parse(error._body);
+          document.getElementById('alert').innerHTML = "<div class='alert alert-danger' role='alert'>" + msg.message + "</div>	";
+          this.spinner.stop()
 
-      },
-      () => {
-        // console.log("Completed")
-      }
+        },
+        () => {
+          // console.log("Completed")
+        }
       )
   }
   GoToOrders() {
@@ -240,14 +240,14 @@ export class AppComponent {
     $("#usuk").toggle();
   }
   // hideUserMenu() {
-    // if (document.getElementById('cart-list').style.display != 'none')
-    //   document.getElementById('cart-list').style.display = 'none';
-    // if (document.getElementById('user-details').style.display != 'none')
-    //   document.getElementById('user-details').style.display = 'none';
-    // // if (document.getElementById('user-details').style.display == 'block') {
-    //   document.getElementById('user-details').style.display = 'none';
-    //   console.log('aaa');
-    // }
+  // if (document.getElementById('cart-list').style.display != 'none')
+  //   document.getElementById('cart-list').style.display = 'none';
+  // if (document.getElementById('user-details').style.display != 'none')
+  //   document.getElementById('user-details').style.display = 'none';
+  // // if (document.getElementById('user-details').style.display == 'block') {
+  //   document.getElementById('user-details').style.display = 'none';
+  //   console.log('aaa');
+  // }
 
   // }
   goToCart() {
@@ -266,53 +266,53 @@ export class AppComponent {
         this.spinner.stop();
         this.fb.api('/me' + "?" + "access_token=" + response.authResponse.accessToken + "&fields=id,name,email,picture,first_name,last_name,birthday,gender")
           .then(
-          (data) => {
-            this.spinner.stop();
-            if (data.email == undefined)
-              this.isEmail = true;
-            this.socialLogin = {
-              id: data.id,
-              email: data.email,
-              first_name: data.first_name,
-              last_name: data.last_name,
-              displayName: data.name,
-              username: "THO" + data.name + new Date(),
-              profileImageURL: data.picture.data.url,
-              DOB: data.birthday,
-              gender: data.gender,
-              IsSocailLogin: true
-            };
+            (data) => {
+              this.spinner.stop();
+              if (data.email == undefined)
+                this.isEmail = true;
+              this.socialLogin = {
+                id: data.id,
+                email: data.email,
+                first_name: data.first_name,
+                last_name: data.last_name,
+                displayName: data.name,
+                username: "THO" + data.name + new Date(),
+                profileImageURL: data.picture.data.url,
+                DOB: data.birthday,
+                gender: data.gender,
+                IsSocailLogin: true
+              };
 
 
-            // console.log("fb", data);
-            this.spinner.stop();
-            // console.log(this.socialLogin.email)
-            this.Api.loginUser(this.socialLogin)
-              .subscribe(
-              (data) => {
-                // console.log("register : ", data);
-                this.spinner.stop();
-                localStorage.setItem('user', JSON.stringify(data));
-                this.userLogin = true;
-                this.user = JSON.parse(localStorage.getItem('user'));
-                // document.getElementById('order').setAttribute('class', '');
-                // document.getElementById('userLogin').setAttribute('class', '');
+              // console.log("fb", data);
+              this.spinner.stop();
+              // console.log(this.socialLogin.email)
+              this.Api.loginUser(this.socialLogin)
+                .subscribe(
+                  (data) => {
+                    // console.log("register : ", data);
+                    this.spinner.stop();
+                    localStorage.setItem('user', JSON.stringify(data));
+                    this.userLogin = true;
+                    this.user = JSON.parse(localStorage.getItem('user'));
+                    // document.getElementById('order').setAttribute('class', '');
+                    // document.getElementById('userLogin').setAttribute('class', '');
 
-                this.loginmodal.close();
-                this.router.navigate(['/buyNow']);
-              },
-              (err) => {
-                // console.log(err);
-                this.loginmodal.close();
-                this.spinner.stop()
-              }
-              )
+                    this.loginmodal.close();
+                    this.router.navigate(['/buyNow']);
+                  },
+                  (err) => {
+                    // console.log(err);
+                    this.loginmodal.close();
+                    this.spinner.stop()
+                  }
+                )
 
 
-          },
-          (err) => {
-            console.log(err);
-          }
+            },
+            (err) => {
+              console.log(err);
+            }
           )
       },
       (error: any) => console.error(error)
@@ -330,22 +330,22 @@ export class AppComponent {
 
     this.Api.loginUser(this.socialLogin)
       .subscribe(
-      (data) => {
-        // console.log("register : ", data);
-        this.spinner.stop();
-        localStorage.setItem('user', JSON.stringify(data));
-        this.userLogin = true;
-        this.user = JSON.parse(localStorage.getItem('user'));
-        // document.getElementById('order').setAttribute('class', '');
-        // document.getElementById('userLogin').setAttribute('class', '');
+        (data) => {
+          // console.log("register : ", data);
+          this.spinner.stop();
+          localStorage.setItem('user', JSON.stringify(data));
+          this.userLogin = true;
+          this.user = JSON.parse(localStorage.getItem('user'));
+          // document.getElementById('order').setAttribute('class', '');
+          // document.getElementById('userLogin').setAttribute('class', '');
 
-        this.loginmodal.close();
-        this.router.navigate(['/buyNow']);
-      },
-      (err) => {
-        // console.log(err);
+          this.loginmodal.close();
+          this.router.navigate(['/buyNow']);
+        },
+        (err) => {
+          // console.log(err);
 
-      }
+        }
       )
 
   }
@@ -353,20 +353,20 @@ export class AppComponent {
 
     this.fb.getLoginStatus()
       .then(
-      (response) => {
-        // console.log(response)
-        this.fb.api('/me' + "?" + "access_token=" + response.authResponse.accessToken).then(
-          (res) => {
-            // console.log(res)
-          },
-          (err) => {
-            // console.log(err);
-          }
-        )
-      },
-      (err) => {
-        // console.log(err);
-      }
+        (response) => {
+          // console.log(response)
+          this.fb.api('/me' + "?" + "access_token=" + response.authResponse.accessToken).then(
+            (res) => {
+              // console.log(res)
+            },
+            (err) => {
+              // console.log(err);
+            }
+          )
+        },
+        (err) => {
+          // console.log(err);
+        }
       )
 
 
@@ -379,16 +379,16 @@ export class AppComponent {
   getPromotionBar() {
     this.Api.getPromotionBar()
       .subscribe(
-      (data) => {
-        // console.log("Promotion :", data);
-        this.promotion = data[0];
-        this.spinner.stop();
+        (data) => {
+          // console.log("Promotion :", data);
+          this.promotion = data[0];
+          this.spinner.stop();
 
 
-      },
-      (err) => {
-        // console.log(err);
-      }
+        },
+        (err) => {
+          // console.log(err);
+        }
       )
 
 
@@ -411,29 +411,29 @@ export class AppComponent {
     }
     this.Api.checkRates({ items: orderItems })
       .subscribe(
-      (data) => {
-        this.spinner.stop();
-        // console.log(data);
-        this.bill.items = data.items;
-        document.getElementById('myCart').innerText = this.bill.items.length;
-        localStorage.setItem('bill', JSON.stringify(data));
-        if (JSON.parse(localStorage.getItem('bill')).items.length == 0) {
-          localStorage.removeItem('myCart');
-          localStorage.removeItem('bill');
-          localStorage.removeItem('obj');
-        }
-
-      },
-      (err) => {
-        if (err.status === 401) {
-          // console.log('redirect to login');
+        (data) => {
           this.spinner.stop();
-          localStorage.removeItem('user');
-          this.router.navigate(['/login']);
-        } else {
-          // console.log(err.statusText);
+          // console.log(data);
+          this.bill.items = data.items;
+          document.getElementById('myCart').innerText = this.bill.items.length;
+          localStorage.setItem('bill', JSON.stringify(data));
+          if (JSON.parse(localStorage.getItem('bill')).items.length == 0) {
+            localStorage.removeItem('myCart');
+            localStorage.removeItem('bill');
+            localStorage.removeItem('obj');
+          }
+
+        },
+        (err) => {
+          if (err.status === 401) {
+            // console.log('redirect to login');
+            this.spinner.stop();
+            localStorage.removeItem('user');
+            this.router.navigate(['/login']);
+          } else {
+            // console.log(err.statusText);
+          }
         }
-      }
       )
 
   }

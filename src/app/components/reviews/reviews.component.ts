@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../apiServices/api.service';
 import { SpinnerService } from '../../apiServices/spinner.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-reviews',
   templateUrl: './reviews.component.html',
@@ -10,32 +12,42 @@ import { SpinnerService } from '../../apiServices/spinner.service';
 export class ReviewsComponent implements OnInit {
 
   constructor(
-    private Api:ApiService,
-    private spinner:SpinnerService
+    private Api: ApiService,
+    private spinner: SpinnerService
   ) { this.getReviews() }
-    reviews;
-    getReviews(){
-      this.Api.getReviews()
+  reviews;
+  getReviews() {
+    this.Api.getReviews()
       .subscribe(
-        (data)=>{
-            this.spinner.stop();
-            // console.log("reviews : ",data);
-            this.reviews = data;
+        (data) => {
+          this.spinner.stop();
+          // console.log("reviews : ",data);
+          this.reviews = data;
         },
-        (err)=>{
-            // console.log(err);
+        (err) => {
+          // console.log(err);
         }
       )
-    }
-    closeMenu() {
+  }
+  closeMenu() {
     if (document.getElementById('cart-list').style.display != 'none')
       document.getElementById('cart-list').style.display = 'none';
     if (document.getElementById('user-details').style.display != 'none')
       document.getElementById('user-details').style.display = 'none';
-      // console.log('closeMenu')
+    // console.log('closeMenu')
   }
 
   ngOnInit() {
+    setTimeout(
+      () => {
+        $(".feature_slider").not('.slick-initialized').slick({
+          arrows: true,
+          infinite: true,
+          autoplay: true,
+          slidesToShow: 1
+        });
+      }, 3000)
   }
-
 }
+
+

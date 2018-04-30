@@ -482,7 +482,7 @@ Header
     width: 26px;
     height: 44px;
     top: 51%;
-    left: -25px !important;
+    left: -57px !important;
 }
 .feature_slider .slick-next{background: url(../images/next.png) no-repeat !important;width: 26px;height: 44px;top: 51%;right: -25px !important;}
 .feature_slider .slick-prev:before, .feature_slider .slick-next:before, .top_brand_slider .slick-prev:before, .top_brand_slider .slick-next:before{

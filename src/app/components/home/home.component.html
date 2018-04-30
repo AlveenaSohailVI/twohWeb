@@ -1,36 +1,34 @@
-
-
-<div class="modal modals"  id="myModal" role="dialog" *ngIf='show'>
+<div class="modal modals" id="myModal" role="dialog" *ngIf='show'>
     <!-- <div class="modal-dialog"> -->
 
-        <!-- Modal content-->
-        <!-- <div class="modal-content"> -->
-            <!-- <div class="modal-header">
+    <!-- Modal content-->
+    <!-- <div class="modal-content"> -->
+    <!-- <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Modal Header</h4>
           </div> -->
-            <!-- <div class="modal-body"> -->
-                    <div class="language-popup">
+    <!-- <div class="modal-body"> -->
+    <div class="language-popup">
 
-                <h2>Please select</h2>
+        <h2>Please select</h2>
 
-                <div class="flag-box" data-dismiss="modal" (click)='selectCountry("usa")'>
-                    <img src="assets/images/flag1.png" alt="" />
-                    <span>United
-                        <br> States</span>
-                </div>
+        <div class="flag-box" data-dismiss="modal" (click)='selectCountry("usa")'>
+            <img src="assets/images/flag1.png" alt="" />
+            <span>United
+                <br> States</span>
+        </div>
 
-                <div class="flag-box" data-dismiss="modal">
-                    <img src="assets/images/flag2.png" alt="" (click)='selectCountry("uk")' />
-                    <span>United
-                        <br> Kingdom</span>
-                </div>
-                    </div>
-            <!-- </div> -->
-            <!-- <div class="modal-footer">
+        <div class="flag-box" data-dismiss="modal">
+            <img src="assets/images/flag2.png" alt="" (click)='selectCountry("uk")' />
+            <span>United
+                <br> Kingdom</span>
+        </div>
+    </div>
+    <!-- </div> -->
+    <!-- <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div> -->
-        <!-- </div> -->
+    <!-- </div> -->
 
     <!-- </div> -->
 </div>
@@ -58,18 +56,23 @@
 
         <div class="home_slider">
             <div class="item" *ngFor="let banner of banners;let i=index">
-              <img [src]="banner.image" alt="*"/>
-              <div class="btn_sec">
-               <a routerLink="/home" fragment="services"  class="fragment btn btn-default cus"><span><i class="fa fa-play-circle" aria-hidden="true"></i> How it works</span></a>
-               <a href="javaScript:void(0)" (click)="BuyNow();" data-toggle="modal" data-target="#myModal" class="btn btn-default withbg"><span>Order Now</span></a>
-              </div>
+                <img [src]="banner.image" alt="*" />
+                <div class="btn_sec">
+                    <a routerLink="/home" fragment="services" class="fragment btn btn-default cus">
+                        <span>
+                            <i class="fa fa-play-circle" aria-hidden="true"></i> How it works</span>
+                    </a>
+                    <a href="javaScript:void(0)" (click)="BuyNow();" data-toggle="modal" data-target="#myModal" class="btn btn-default withbg">
+                        <span>Order Now</span>
+                    </a>
+                </div>
             </div>
-            
-        
-          </div>
+
+
+        </div>
 
         <br>
-<!-- 
+        <!-- 
         <div class="local-scroll">
             <div class="carousel-caption d-md-block">
                 <div class="shop-detail">
@@ -117,45 +120,50 @@
 <!--<app-footer></app-footer>-->
 
 <modal style="padding:0 !important;" class="news-letter" #subscribeModal>
-	 <div class="discount_sec wow fadeInDown">
-   <div class="container">
-    <div class="row">
-	
-	<div class="discount_caption">
-	 <h2><span>Get 10% off on <br/> shipping charges on</span></h2>
-	 <p>Stay ahead, send us your email address here.</p>
-	 <div class="email_sec">
-      <form class="form contact-form" id="contact_form" [formGroup]="subscribeForm" (ngSubmit)="subscribe(subscribeForm.value)">
-            <div class="form-group" [ngClass]="{'has-error':!subscribeForm.controls['email'].valid && subscribeForm.controls['email'].touched}">
-                <input type="email" [formControl]="subscribeForm.controls['email']" class="input-md round form-control" placeholder="Email"
-                    required>
-            </div>
+    <div class="discount_sec wow fadeInDown">
+        <div class="container">
+            <div class="row">
 
-            <!--<div class="pt-10" style="text-align: right">
+                <div class="discount_caption">
+                    <h2>
+                        <span>Get 10% off on
+                            <br/> shipping charges on</span>
+                    </h2>
+                    <p>Stay ahead, send us your email address here.</p>
+                    <div class="email_sec">
+                        <form class="form contact-form" id="contact_form" [formGroup]="subscribeForm" (ngSubmit)="subscribe(subscribeForm.value)">
+                            <div class="form-group" [ngClass]="{'has-error':!subscribeForm.controls['email'].valid && subscribeForm.controls['email'].touched}">
+                                <input type="email" [formControl]="subscribeForm.controls['email']" class="input-md round form-control" placeholder="Email"
+                                    required>
+                            </div>
+
+                            <!--<div class="pt-10" style="text-align: right">
 
                 <button class="submit_btn btn btn-mod btn-medium btn-round " id="reg-btn" type="submit" [disabled]="!subscribeForm.valid">Subscribe</button>
             </div> -->
-        </form>
-	 </div>
-	</div>
-	
-	</div>
-   </div>
-  </div>
-<a href="javascript:;" class="close" (click)="subscribeModal.close()">No Thanks</a>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <a href="javascript:;" class="close" (click)="subscribeModal.close()">No Thanks</a>
 
 </modal>
 
 <modal #loginModal>
     <modal-header>
         <h4 class="modal-title" style="width: 100%">Log in First</h4>
-        <a href="javaScript:void(0)" (click)="loginModal.close()" class="modal-icon"><i class="fa fa-times" aria-hidden="true"  ></i></a>
+        <a href="javaScript:void(0)" (click)="loginModal.close()" class="modal-icon">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
     </modal-header>
     <modal-body style="text-align: center">
         <button class="btn btn-mod btn-medium btn-round btn-facebook " (click)="fbLogin()">
-                <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                Sign in with Facebook
-             </button>
+            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+            Sign in with Facebook
+        </button>
         <p style="margin-bottom: 5px">OR
             <p>
 
@@ -172,19 +180,19 @@
                         <input type="password" [formControl]="loginForm.controls['password']" class="input-md round form-control" placeholder="Password">
                     </div>
                     <hr/>
-                    
+
                     <div class="">
                         <div class="col-6">
                             <span style="color: grey;text-align:center"> Don't have an account? </span>
                             <a href="javaScript:void(0)" style="text-decoration: none" (click)="loginModal.close();gotoLoginPage()"> Sign up </a>
                         </div>
-                        <button class="submit_btn btn btn-mod btn-medium btn-round "  id="reg-btn" type="submit" [disabled]="!loginForm.valid">Login</button>
+                        <button class="submit_btn btn btn-mod btn-medium btn-round " id="reg-btn" type="submit" [disabled]="!loginForm.valid">Login</button>
                     </div>
                 </form>
 
     </modal-body>
 </modal>
-<modal #Contactmodal >
+<modal #Contactmodal>
     <modal-header style="text-align: center">
         <h4 class="modal-title" style="width: 100%">Quick Contact</h4>
         <a href="javaScript:void(0)" (click)="Contactmodal.close()" class="modal-icon">
@@ -195,60 +203,40 @@
         <div id="contact-modal-alert"></div>
         <form class="form contact-form" [formGroup]="contactForm" (ngSubmit)="PostMessage(contactForm.value)">
             <div class="clearfix">
-
                 <div class="cf-left-col">
-
                     <div class="form-group" [ngClass]="{'has-error':!contactForm.controls['name'].valid && contactForm.controls['name'].touched}">
-                        <input type="text" [formControl]="contactForm.controls['name']" name="name" id="name" class="field"
-                            placeholder="Name" pattern=".{3,100}" required>
+                        <input type="text" [formControl]="contactForm.controls['name']" name="name" id="name" class="field" placeholder="Name" pattern=".{3,100}"
+                            required>
                     </div>
-
                     <div class="form-group" [ngClass]="{'has-error':!contactForm.controls['email'].valid && contactForm.controls['email'].touched}">
-                        <input type="email" [formControl]="contactForm.controls['email']" name="email" id="email" class="field"
-                            placeholder="Email" pattern=".{5,100}" required>
+                        <input type="email" [formControl]="contactForm.controls['email']" name="email" id="email" class="field" placeholder="Email"
+                            pattern=".{5,100}" required>
                     </div>
                     <div class="form-group" [ngClass]="{'has-error':!contactForm.controls['phoneNo'].valid && contactForm.controls['phoneNo'].touched}">
-                        <input type="text" [formControl]="contactForm.controls['phoneNo']" name="PhoneNo" id="PhoneNo" class="field"
-                            placeholder="Phone Number" pattern=".{5,100}" required>
+                        <input type="text" [formControl]="contactForm.controls['phoneNo']" name="PhoneNo" id="PhoneNo" class="field" placeholder="Phone Number"
+                            pattern=".{5,100}" required>
                     </div>
-
                 </div>
-
                 <div class="cf-right-col">
-
                     <div class="form-group" [ngClass]="{'has-error':!contactForm.controls['message'].valid && contactForm.controls['message'].touched}">
-                        <textarea name="message" [formControl]="contactForm.controls['message']" id="message" class="field"
-                            style="height: 115px;" placeholder="Message"></textarea>
+                        <textarea name="message" [formControl]="contactForm.controls['message']" id="message" class="field" style="height: 115px;"
+                            placeholder="Message"></textarea>
                     </div>
-
                 </div>
-
             </div>
-            <hr/>
             <div class="clearfix">
-
-                <div class="cf-left-col">
-
+                <!-- <div class="cf-left-col">
                     <div class="form-tip pt-20">
                         <i class="fa fa-info-circle"></i> All the fields are required
                     </div>
-
-                </div>
-
+                </div> -->
                 <div class="cf-right-col">
-
                     <div class="align-right pt-10">
                         <button type="submit" class="submit_btn btn btn-mod btn-medium btn-round" id="submit_btn" [disabled]="!contactForm.valid">Submit Message</button>
                     </div>
-
                 </div>
-
             </div>
-
-
-
             <div id="result"></div>
         </form>
     </modal-body>
-
 </modal>

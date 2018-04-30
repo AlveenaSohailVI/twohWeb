@@ -109,7 +109,7 @@ export class StartShoppingComponent implements OnInit {
     console.log(this.productDetails);
     this.obj = { item: this.productDetails, qty: this.qty };
     localStorage.setItem('obj', JSON.stringify(this.obj));
-    this.router.navigate(['/buyNow/shopingCart']);
+    this.router.navigate(['/buyNow/shoppingCart']);
   }
 
   ngOnInit() {
